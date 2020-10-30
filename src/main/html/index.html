@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+	<title>RadarCovid</title>
+	 <!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../javascript/main.js"></script>
+</head>
+<body>
+	<div id="topBar" class="navbar navbar-expand-sm bg-dark navbar-dark d-flex">
+		<a class="navbar-brand" href="#"><img src="../resources/logo.png" height="40px" width="40px"></a>
+		<span id="loggedAs" class="navbar-text">You are not logged in</span>
+		<span id="logButtons" class="ml-auto">
+			<button id="btnLogin" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Log in</button>
+			<button id="btnRegister" class="btn btn-secondary" data-toggle="modal" data-target="#modalRegister">Register</button>
+		</span>
+	</div>
+	<div class="row">
+		<div id="leftBar" class="col-md-2 list-group p-0 bg-dark vh-100">
+		  <a id="lb1" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Map</a>
+		  <a id="lb2" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Statistics</a>
+		  <a id="lb3" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Register positive</a>
+		  <a id="lb4" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Blah</a>
+		  <a id="lb5" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Blah</a>
+		</div>
+
+		<div id="content" class="col-10">
+
+		</div>
+	</div>
+	<div class="modal" id="modalLogin">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+
+	      <div class="modal-header">
+	        <h4 class="modal-title">Log In</h4>
+	      </div>
+
+	      <div class="modal-body">
+	        <form onsubmit="login()" name="formLogin">
+	        	  <div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Username</span>
+				    </div>
+				 	<input type="text" class="form-control" id="user" name="user" required><br>
+				</div>
+
+				<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Password</span>
+				    </div>
+				 	<input type="text" class="form-control" id="pass" name="pass" required><br>
+				</div>
+				<div class="modal-footer">
+			      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      <button type="submit" class="btn btn-primary">Log in</button>
+			    </div>
+	        </form>
+	      </div>
+
+	      
+
+	    </div>
+	  </div>
+	</div>
+
+	<div class="modal" id="modalRegister">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+
+	      <div class="modal-header">
+	        <h4 class="modal-title">Register</h4>
+	      </div>
+
+	      <div class="modal-body">
+	       	<form onsubmit="register()" name="formRegister"> 
+	       		<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Username</span>
+				    </div>
+				 	<input type="text" class="form-control" id="user" name="user" required><br>
+				</div>
+
+				<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Password</span>
+				    </div>
+				 	<input type="text" class="form-control" id="pass" name="pass" required><br>
+				</div>
+
+				<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Email</span>
+				    </div>
+				 	<input type="email" class="form-control" id="email" name="email" required><br>
+				</div>
+
+				<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Age</span>
+				    </div>
+				 	<input type="number" class="form-control" id="age" name="age" required><br>
+				</div>
+
+				<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Gender</span>
+				    </div>
+				 	<select class="form-control" id="gender">
+					  <option>Male</option>
+					  <option>Female</option>
+					  <option>Other</option>
+					</select>
+				</div>
+
+				<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Occupation</span>
+				    </div>
+				 	<select class="form-control" id="occupation">
+					  <option>Student</option>
+					  <option>First Sector worker</option>
+					  <option>Industry worker</option>
+					  <option>Third sector worker</option>
+					  <option>Unoccupied</option>
+					</select>
+				</div>
+
+				<div class="modal-footer">
+			      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      <button type="submit" class="btn btn-primary">Register</button>
+			    </div>
+	       	</form>
+	      </div>
+
+	      
+
+	    </div>
+	  </div>
+	</div>
+	
+</body>
+</html>
