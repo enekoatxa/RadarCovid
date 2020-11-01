@@ -1,3 +1,5 @@
+
+/*
 public class PositiveGestor {
     private static PositiveGestor positivegestor = null;
 
@@ -19,3 +21,7 @@ public class PositiveGestor {
         // Obviously, it won't be a void method, but it is now like that because it is nothing but the skeleton
     }
 }
+
+
+ */
+
