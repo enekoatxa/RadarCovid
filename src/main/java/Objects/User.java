@@ -5,6 +5,8 @@ import lombok.*;
 @RequiredArgsConstructor
 public class User {
     @Getter @Setter @NonNull
+    private String idCard;
+    @Getter @Setter @NonNull
     private String username;
     @Getter @Setter @NonNull
     private String password;
