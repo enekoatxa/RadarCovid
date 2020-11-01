@@ -1,0 +1,36 @@
+private class AuthGestor {
+    private static AuthGestor authgestor = null;
+
+    private AuthGestor(){}
+
+    public static AuthGestor getGestorAuth()
+    {
+        synchronized(AuthGestor.class)
+        {
+            if (authgestor == null) authgestor = new AuthGestor();
+        }
+        return authgestor;
+    }
+
+    public void iniciarSesion (String userName, String password)
+    {
+        try {
+            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente inicie la sesion del usuario.
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void registrarse (String username, String password, String email, int age, String gender, String occupation, String DNI)
+    {
+        try {
+            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+
+}
