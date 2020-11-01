@@ -1,12 +1,28 @@
 package Objects;
 
-import lombok.*;
+import javax.jdo.annotations.*;
 
-@RequiredArgsConstructor
+import lombok.*;
+@PersistenceCapable
+@AllArgsConstructor
 public class User {
-    @Getter @Setter @NonNull
-    private String username;
-    @Getter @Setter @NonNull
+//    public User(int idCard, String password, String email, int age, String gender, String occupation, boolean admin) {
+//		this.idCard=idCard;
+//		this.password=password;
+//		this.email=email;
+//		this.age=age;
+//		this.gender=gender;
+//		this.occupation=occupation;
+//		this.admin=admin;
+//	}
+	@Getter @Setter @NonNull
+    @PrimaryKey
+    private int idCard;
+	
+    public int getIdCard() {
+		return idCard;
+	}
+	@Getter @Setter @NonNull
     private String password;
     @Getter @Setter @NonNull
     private String email;
@@ -16,6 +32,7 @@ public class User {
     private String gender;
     @Getter @Setter @NonNull
     private String occupation;
+    @Getter @Setter @NonNull
     private boolean admin=false;
 
 }
