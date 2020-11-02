@@ -36,9 +36,15 @@ public class DAOGestor {
          * POSITIVE(idPositive, user, latitude, longitude, year, month, day)
          */
     	
-    	User patient = new User(444444444, "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	DAOAuthGestor.getDAOAuthgestor().registerUser(444444444, "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	User patient = new User(55555555, "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	User patient2 = new User(66666666, "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	DAOAuthGestor.getDAOAuthgestor().registerUser(55555555, "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	DAOAuthGestor.getDAOAuthgestor().registerUser(66666666, "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	DAOAuthGestor.getDAOAuthgestor().deleteUser(patient);
     	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, 100, 200, 2020, 11, 02);
+    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient2, 100, 200, 2020, 11, 02);
+   // 	DAOPositiveGestor.getDAOPositivegestor().deletePositive(1);
+    	
 
     }	
 }
