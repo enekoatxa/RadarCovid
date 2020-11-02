@@ -1,3 +1,5 @@
+package AppService;
+
 public class StatsGestor {
     private static StatsGestor statsGestor = null;
 

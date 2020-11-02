@@ -123,7 +123,7 @@
                         <artifactId>exec-maven-plugin</artifactId>
                         <version>1.2.1</version>
                         <configuration>
-                            <mainClass>Objects.MainDB</mainClass>
+                            <mainClass>DAO.DAOGestor</mainClass>
                         </configuration>
                     </plugin>
                 </plugins>

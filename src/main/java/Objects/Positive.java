@@ -5,7 +5,7 @@ import javax.jdo.annotations.*;
 @PersistenceCapable
 @AllArgsConstructor
 public class Positive {
-    public Positive(User patient, int latitude, int longitude, int year, int month, int day) {
+    public Positive(User patient, double latitude, double longitude, int year, int month, int day) {
 		this.patient=patient;
 		this.latitude=latitude;
 		this.longitude=longitude;
@@ -30,8 +30,8 @@ public class Positive {
     private int month;
     @Getter @Setter
     private int day;
-	public User getPatient() {
-		return patient;
-	}
+//	public User getPatient() {
+//		return patient;
+//	}
 
 }

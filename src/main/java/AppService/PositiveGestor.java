@@ -1,5 +1,7 @@
+package AppService;
 
-/*
+import Objects.User;
+
 public class PositiveGestor {
     private static PositiveGestor positivegestor = null;
 
@@ -14,6 +16,7 @@ public class PositiveGestor {
     }
     public void RegisterPositive(User patient, double latitude, double longitude, int year, int month, int day) {
         // This method will call DAOgestor in order to register a positive in the database
+    	
     }
 
     public void SearchPositives() {
@@ -23,5 +26,5 @@ public class PositiveGestor {
 }
 
 
- */
+
 

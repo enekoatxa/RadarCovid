@@ -11,9 +11,9 @@ public class User {
     @PrimaryKey
     private int idCard;
 	
-    public int getIdCard() {
-		return idCard;
-	}
+//    public int getIdCard() {
+//		return idCard;
+//	}
 	@Getter @Setter @NonNull
     private String password;
     @Getter @Setter @NonNull
