@@ -1,14 +1,20 @@
 package Objects;
 
-import lombok.*;
+import javax.jdo.annotations.*;
 
-@RequiredArgsConstructor
+import lombok.*;
+@PersistenceCapable
+@AllArgsConstructor
 public class User {
-    @Getter @Setter @NonNull
-    private String idCard;
-    @Getter @Setter @NonNull
-    private String username;
-    @Getter @Setter @NonNull
+
+	@Getter @Setter @NonNull
+    @PrimaryKey
+    private int idCard;
+	
+//    public int getIdCard() {
+//		return idCard;
+//	}
+	@Getter @Setter @NonNull
     private String password;
     @Getter @Setter @NonNull
     private String email;
@@ -18,6 +24,7 @@ public class User {
     private String gender;
     @Getter @Setter @NonNull
     private String occupation;
+    @Getter @Setter @NonNull
     private boolean admin=false;
 
 }
