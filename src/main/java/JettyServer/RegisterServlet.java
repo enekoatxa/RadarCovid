@@ -15,6 +15,7 @@ public class RegisterServlet extends HttpServlet {
     private static String correctRegistration = "true";
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        String idCard = request.getParameter("idCard");
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
         String email = request.getParameter("email");
