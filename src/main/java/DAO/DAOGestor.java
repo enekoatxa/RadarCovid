@@ -38,7 +38,7 @@ public class DAOGestor {
     	User patient2 = new User(66666666, "1234", "jon@gmail.com", 21, "M", "Student", true);
     	DAOAuthGestor.getDAOAuthgestor().registerUser(55555555, "1234", "jon@gmail.com", 21, "M", "Student", true);
     	DAOAuthGestor.getDAOAuthgestor().registerUser(66666666, "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	DAOAuthGestor.getDAOAuthgestor().deleteUser(patient);
+    	DAOAuthGestor.getDAOAuthgestor().deleteUser();
     	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, 100, 200, 2020, 11, 02);
     	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient2, 100, 200, 2020, 11, 02);
    // 	DAOPositiveGestor.getDAOPositivegestor().deletePositive(1);
