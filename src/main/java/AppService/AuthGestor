@@ -1,4 +1,8 @@
-private class AuthGestor {
+package AppService;
+
+import DAO.DAOGestor;
+
+public class AuthGestor {
     private static AuthGestor authgestor = null;
 
     private AuthGestor(){}
@@ -12,9 +16,10 @@ private class AuthGestor {
         return authgestor;
     }
 
-    public void iniciarSesion (String userName, String password)
+    public void logIn (String userName, String password)
     {
         try {
+            DAOGestor.getDAOgestor().iniciarSesion(userName, password);
             // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente inicie la sesion del usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -22,9 +27,10 @@ private class AuthGestor {
         }
     }
 
-    public void registrarse (String username, String password, String email, int age, String gender, String occupation, String DNI)
+    public void register (String username, String password, String email, int age, String gender, String occupation, int idCard, boolean admin)
     {
         try {
+            DAOGestor.getDAOgestor().registrarse(idCard, password, email, age, gender, occupation, admin);
             // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -32,5 +38,8 @@ private class AuthGestor {
         }
     }
 
-
+    public void deleteCount(String userName, String password)
+    {
+        DAOGestor.getDAOgestor().deleteUser(userName, password);
+    }
 }

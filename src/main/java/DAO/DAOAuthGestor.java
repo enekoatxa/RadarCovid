@@ -7,13 +7,13 @@ import javax.jdo.Transaction;
 
 import Objects.User;
 
-public class DAOAuthGestor {
+protected class DAOAuthGestor {
     private static DAOAuthGestor gestorAuthDAO = null;
 
     private DAOAuthGestor() {
     }
 
-    public static DAOAuthGestor getDAOAuthgestor()
+    protected static DAOAuthGestor getDAOAuthgestor()
     {
         synchronized(DAOAuthGestor.class)
         {
@@ -21,7 +21,7 @@ public class DAOAuthGestor {
         }
         return gestorAuthDAO;
     }
-    public void registerUser(int idCard, String password, String email, int age, String gender, String occupation, boolean admin)
+    protected void registerUser(int idCard, String password, String email, int age, String gender, String occupation, boolean admin)
 	{
 		 try
 	        {
@@ -49,5 +49,15 @@ public class DAOAuthGestor {
 	        {
 	            System.err.println("* Exception: " + ex.getMessage());
 	        }
+	}
+
+	protected void logIn(String userName, String password)
+	{
+
+	}
+
+	protected void deleteUser(String userName, String password)
+	{
+
 	}
 }

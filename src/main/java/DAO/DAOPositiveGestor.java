@@ -5,13 +5,13 @@ import Objects.User;
 import Objects.Positive;
 import lombok.*;
 
-public class DAOPositiveGestor {
+protected class DAOPositiveGestor {
     private static DAOPositiveGestor gestorPositiveDAO = null;
 
     private DAOPositiveGestor() {
     }
 
-    public static DAOPositiveGestor getDAOPositivegestor()
+    protected static DAOPositiveGestor getDAOPositivegestor()
     {
         synchronized(DAOPositiveGestor.class)
         {
@@ -19,7 +19,7 @@ public class DAOPositiveGestor {
         }
         return gestorPositiveDAO;
     }
-    public void registerPositive(User patient, double latitude, double longitude, int year, int month, int day)
+    protected void registerPositive(User patient, double latitude, double longitude, int year, int month, int day)
 	{
 		 try
 	        {
