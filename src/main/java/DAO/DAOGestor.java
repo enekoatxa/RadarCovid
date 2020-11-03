@@ -8,6 +8,7 @@ import lombok.*;
 public class DAOGestor {
 
     private static DAOGestor gestorDAO = null;
+    public boolean registered = false;
 
     private DAOGestor() {
     }
@@ -57,20 +58,22 @@ public class DAOGestor {
         }
     }
 
-    public void registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
+    public boolean registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
     {
         try {
-            DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, username, password, email, age, gender, occupation, admin);
+
+            registered = DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, username, password, email, age, gender, occupation, admin);
             // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return registered;
     }
 
-    public void deleteUser(String idCard, String password) {
+    public void deleteUser(String userName, String password) {
         try {
-            DAOAuthGestor.getDAOAuthgestor().deleteUser(idCard, password);
+            DAOAuthGestor.getDAOAuthgestor().deleteUser(userName, password);
         } catch (Exception e) {
             e.printStackTrace();
         }

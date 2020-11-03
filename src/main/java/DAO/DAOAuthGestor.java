@@ -4,6 +4,8 @@ import javax.jdo.*;
 
 import Objects.User;
 
+import java.time.Clock;
+
 public class DAOAuthGestor {
     private static DAOAuthGestor gestorAuthDAO = null;
 
@@ -32,6 +34,7 @@ public class DAOAuthGestor {
 				transaction.commit();
 				ok=true;
 			}catch(Exception error2){
+				System.out.println("No ha conseguido conectarse a la BD");
 				ok=false;
 			}finally {
 				if (transaction.isActive()){

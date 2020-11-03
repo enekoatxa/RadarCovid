@@ -6,6 +6,7 @@ import Objects.User;
 public class AuthGestor {
     private static AuthGestor authgestor = null;
     User usuario = null;
+    boolean registered = false;
     private AuthGestor(){}
 
     public static AuthGestor getGestorAuth()
@@ -30,15 +31,16 @@ public class AuthGestor {
         return usuario;
     }
 
-    public void register (String username, String password, String email, int age, String gender, String occupation, int idCard, boolean admin)
+    public boolean register (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
     {
         try {
-            DAOGestor.getDAOgestor().registrarse(idCard, username,password, email, age, gender, occupation, admin);
+            registered = DAOGestor.getDAOgestor().registrarse(idCard, username,password, email, age, gender, occupation, admin);
             // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return registered;
     }
 
     public void deleteCount(String userName, String password)

@@ -1,5 +1,8 @@
 package JettyServer;
 
+import AppService.AuthGestor;
+import com.google.gson.Gson;
+
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -13,9 +16,11 @@ import java.nio.charset.StandardCharsets;
 
 public class RegisterServlet extends HttpServlet {
     private static String correctRegistration = "true";
+    private boolean registeredBoolean = false;
+    private String registered;
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        String idCard = request.getParameter("idCard");
+        String idCardString = request.getParameter("idCard");
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
         String email = request.getParameter("email");
@@ -23,12 +28,22 @@ public class RegisterServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String occupation = request.getParameter("occupation");
 
+        Integer idCard;
+        idCard = Integer.parseInt(idCardString);
+        registeredBoolean = AuthGestor.getGestorAuth().register(idCard, user, pass, email, age, gender, occupation, false);
         System.out.println("I have received: User: " + user + " ,Password: " + pass + " ,Email: " + email + " ,Age: " + age + " ,Gender: " + gender + " ,Occupation: " + occupation);
         //Kalkulatu erregistroa ondo egin den edo ez
         //correctRegistration=callToRegistrationManager();
+        if(registeredBoolean) {
+            registered = "true";
+        }
+        else {
+            registered = "false";
+        }
 
+        String registeredJsonString = new Gson().toJson(registered);
         //Prepare the response and return it
-        final ByteBuffer content = ByteBuffer.wrap(correctRegistration.getBytes(StandardCharsets.UTF_8));
+        final ByteBuffer content = ByteBuffer.wrap(registeredJsonString.getBytes(StandardCharsets.UTF_8));
         final AsyncContext async = request.startAsync();
         final ServletOutputStream out = response.getOutputStream();
         out.setWriteListener(new WriteListener() {
