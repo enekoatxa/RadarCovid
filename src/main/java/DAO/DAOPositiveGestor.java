@@ -5,7 +5,7 @@ import Objects.User;
 import Objects.Positive;
 import lombok.*;
 
-protected class DAOPositiveGestor {
+public class DAOPositiveGestor {
     private static DAOPositiveGestor gestorPositiveDAO = null;
 
     private DAOPositiveGestor() {

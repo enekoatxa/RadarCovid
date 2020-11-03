@@ -7,7 +7,7 @@ import javax.jdo.Transaction;
 
 import Objects.User;
 
-protected class DAOAuthGestor {
+public class DAOAuthGestor {
     private static DAOAuthGestor gestorAuthDAO = null;
 
     private DAOAuthGestor() {

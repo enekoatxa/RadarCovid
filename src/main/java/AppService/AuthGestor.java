@@ -1,10 +1,11 @@
 package AppService;
 
 import DAO.DAOGestor;
+import Objects.User;
 
 public class AuthGestor {
     private static AuthGestor authgestor = null;
-
+    User usuario = null;
     private AuthGestor(){}
 
     public static AuthGestor getGestorAuth()
@@ -16,15 +17,17 @@ public class AuthGestor {
         return authgestor;
     }
 
-    public void logIn (String userName, String password)
+    public User logIn (String userName, String password)
     {
         try {
             DAOGestor.getDAOgestor().iniciarSesion(userName, password);
+            // usuario = new User(72835127, "juan", "juansolozabal1@gmail.com", 22, "Male", "Student", false);
             // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente inicie la sesion del usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return usuario;
     }
 
     public void register (String username, String password, String email, int age, String gender, String occupation, int idCard, boolean admin)
