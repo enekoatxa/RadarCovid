@@ -33,7 +33,7 @@ public class AuthGestor {
     public void register (String username, String password, String email, int age, String gender, String occupation, int idCard, boolean admin)
     {
         try {
-            DAOGestor.getDAOgestor().registrarse(idCard, password, email, age, gender, occupation, admin);
+            DAOGestor.getDAOgestor().registrarse(idCard, username,password, email, age, gender, occupation, admin);
             // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block

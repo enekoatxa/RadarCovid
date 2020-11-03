@@ -14,6 +14,8 @@ public class User {
 //    public int getIdCard() {
 //		return idCard;
 //	}
+    @Getter @Setter @NonNull
+    private String username;
 	@Getter @Setter @NonNull
     private String password;
     @Getter @Setter @NonNull

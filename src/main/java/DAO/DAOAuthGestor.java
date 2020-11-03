@@ -18,10 +18,10 @@ public class DAOAuthGestor {
         }
         return gestorAuthDAO;
     }
-    public boolean registerUser(int idCard, String password, String email, int age, String gender, String occupation, boolean admin)
+    public boolean registerUser(int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
 	{
 		boolean ok=false;
-		User newUser = new User(idCard,password,email,age, gender, occupation, admin);
+		User newUser = new User(idCard,username,password,email,age, gender, occupation, admin);
 		try {
 			PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 			PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -79,7 +79,7 @@ public class DAOAuthGestor {
 	        }
 	}
 
-	public User logIn(String userName, String password)
+	public void logIn(String userName, String password)
 	{
 
 	}

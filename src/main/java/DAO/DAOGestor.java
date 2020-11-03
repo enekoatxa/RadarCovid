@@ -34,11 +34,11 @@ public class DAOGestor {
          */
 
 
-    	User patient = new User(55555555, "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	User patient2 = new User(66666666, "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	DAOAuthGestor.getDAOAuthgestor().registerUser(55555555, "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	DAOAuthGestor.getDAOAuthgestor().registerUser(66666666, "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	DAOAuthGestor.getDAOAuthgestor().deleteUser();
+    	User patient = new User(55555555, "Aduriz20","1234", "jon@gmail.com", 21, "M", "Student", true);
+    	User patient2 = new User(66666666,"Gurpe18", "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	DAOAuthGestor.getDAOAuthgestor().registerUser(55555555,"Aduriz20", "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	DAOAuthGestor.getDAOAuthgestor().registerUser(66666666,"Gurpe18", "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	//DAOAuthGestor.getDAOAuthgestor().deleteUser();
     	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, 100, 200, 2020, 11, 02);
     	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient2, 100, 200, 2020, 11, 02);
    // 	DAOPositiveGestor.getDAOPositivegestor().deletePositive(1);
@@ -57,10 +57,10 @@ public class DAOGestor {
         }
     }
 
-    public void registrarse (int idCard, String password, String email, int age, String gender, String occupation, boolean admin)
+    public void registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
     {
         try {
-            DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, password, email, age, gender, occupation, admin);
+            DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, username, password, email, age, gender, occupation, admin);
             // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
