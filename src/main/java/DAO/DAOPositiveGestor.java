@@ -77,4 +77,37 @@ public class DAOPositiveGestor {
 //	            System.err.println("* Exception: " + ex.getMessage());
 //	        }
 //	}
+    
+    public void selectPositives()
+	{
+		try
+        {
+			DAOGestor.persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	        //Insert data in the DB
+		 	DAOGestor.persistentManager = DAOGestor.persistentManagerFactory.getPersistenceManager();
+		 	DAOGestor.transaction = DAOGestor.persistentManager.currentTransaction();
+		 	try {
+            	DAOGestor.transaction.begin();
+            	@SuppressWarnings("unchecked")
+    			Query <Positive> q1 = DAOGestor.persistentManager.newQuery("SELECT FROM " + Positive.class.getName());
+    		    for (Positive aux : q1.executeList()) {
+    				DAOGestor.positives.add(aux);
+    			}
+    		    DAOGestor.transaction.commit();
+
+            } catch (Exception ex) {
+                System.err.println("* Exception selecting positives from db: " + ex.getMessage());
+            } finally {
+                if (DAOGestor.transaction.isActive()) {
+                	DAOGestor.transaction.rollback();
+                }
+                DAOGestor.persistentManager.close();
+            }
+        }
+        catch (Exception ex)
+        {
+            System.err.println("* Exception: " + ex.getMessage());
+        }
+		
+	}
 }

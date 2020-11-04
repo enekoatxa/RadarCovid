@@ -4,7 +4,7 @@ import lombok.*;
 import javax.jdo.annotations.*;
 @PersistenceCapable
 @AllArgsConstructor
-public class Positive {
+  public class Positive {
     public Positive(User patient, double latitude, double longitude, int year, int month, int day) {
 		this.patient=patient;
 		this.latitude=latitude;
@@ -14,7 +14,7 @@ public class Positive {
 		this.day=day;
 	}
 	@Getter @Setter
-    @PrimaryKey
+	@PrimaryKey
     @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
     private long idPositive;
     @Getter @Setter
@@ -30,8 +30,4 @@ public class Positive {
     private int month;
     @Getter @Setter
     private int day;
-//	public User getPatient() {
-//		return patient;
-//	}
-
 }

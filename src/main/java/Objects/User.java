@@ -10,10 +10,6 @@ public class User {
 	@Getter @Setter @NonNull
     @PrimaryKey
     private int idCard;
-	
-//    public int getIdCard() {
-//		return idCard;
-//	}
     @Getter @Setter @NonNull
     private String username;
 	@Getter @Setter @NonNull

@@ -23,7 +23,7 @@ public class DAOAuthGestor {
     public boolean registerUser(int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
 	{
 		boolean ok=false;
-		User newUser = new User(idCard,username,password,email,age, gender, occupation, admin);
+		User newUser = new User(idCard, username, password, email, age, gender, occupation, admin);
 		try {
 			PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 			PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -85,5 +85,38 @@ public class DAOAuthGestor {
 	public void logIn(String userName, String password)
 	{
 
+	}
+	
+	public void selectUsers()
+	{
+		try
+        {
+			DAOGestor.persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	        //Insert data in the DB
+		 	DAOGestor.persistentManager = DAOGestor.persistentManagerFactory.getPersistenceManager();
+		 	DAOGestor.transaction = DAOGestor.persistentManager.currentTransaction();
+		 	try {
+            	DAOGestor.transaction.begin();
+            	@SuppressWarnings("unchecked")
+    			Query <User> q1 = DAOGestor.persistentManager.newQuery("SELECT FROM " + User.class.getName());
+    		    for (User aux : q1.executeList()) {
+    				DAOGestor.users.add(aux);
+    			}
+    		    DAOGestor.transaction.commit();
+
+            } catch (Exception ex) {
+                System.err.println("* Exception selecting users from db: " + ex.getMessage());
+            } finally {
+                if (DAOGestor.transaction.isActive()) {
+                	DAOGestor.transaction.rollback();
+                }
+                DAOGestor.persistentManager.close();
+            }
+        }
+        catch (Exception ex)
+        {
+            System.err.println("* Exception: " + ex.getMessage());
+        }
+		
 	}
 }
