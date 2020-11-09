@@ -3,6 +3,8 @@ package DAO;
 import java.util.ArrayList;
 
 import javax.jdo.*;
+import javax.sql.RowSet;
+
 import Objects.User;
 import Objects.Positive;
 import lombok.*;
@@ -13,10 +15,10 @@ public class DAOGestor {
     public boolean registered = false;
     public static ArrayList<User> users = new ArrayList<User>(); //Aqui se guardaran los usuarios que hay en la BD remota.
     public static ArrayList<Positive> positives = new ArrayList<Positive>(); //Aqui se guardaran los positivos que hay en la BD remota.
-    private static User userLogged;
+    public static User userLogged = new User(1,"","","",1,"","",false);
 
     private DAOGestor() {
-    //	userLogged = new User();
+
     }
 
     public static DAOGestor getDAOgestor()
@@ -28,11 +30,6 @@ public class DAOGestor {
         return gestorDAO;
     }
 
-
-// Class to test Datanucleus
-    static PersistenceManagerFactory persistentManagerFactory;
-    static PersistenceManager persistentManager;
-    static Transaction transaction;
     public static void main(String[] args)
     {
         /*
@@ -47,62 +44,42 @@ public class DAOGestor {
     	}
     	System.out.println("---------------------------------------------");
     	System.out.println("---------------POSITIVES IN BD---------------");
-    	positivesList();
+    	//positivesList();
     	for(Positive aux: positives){
     		System.out.println("IdPositive: "+aux.getIdPositive()+", Latitude: "+ aux.getLatitude()+
     				", Longitude: "+ aux.getLongitude() + ", Year: "+ aux.getYear()+ ", Month: "+ aux.getMonth()+ ", Day: "+aux.getDay());
     	}
-//    	for(Positive aux: positives){
-//    		System.out.println("IdPositive: "+aux.getIdPositive()+", IdCard: "+aux.getPatient().getIdCard()+", Latitude: "+ aux.getLatitude()+
-//    				", Longitude: "+ aux.getLongitude() + ", Year: "+ aux.getYear()+ ", Month: "+ aux.getMonth()+ ", Day: "+aux.getDay());
-//    	}
     	System.out.println("---------------------------------------------");
 
-    	User patient = new User(123123123, "jonusername","1234", "jon@gmail.com", 21, "M", "Student", true);
-   // 	User patient2 = new User(66666666,"javiusername", "1234", "javi@gmail.com", 21, "M", "Student", true);
-    	DAOAuthGestor.getDAOAuthgestor().registerUser(156385628,"jonusername", "1234", "jon@gmail.com", 21, "M", "Student", true);
-   // 	DAOAuthGestor.getDAOAuthgestor().registerUser(66666666,"javiusername", "1234", "javi@gmail.com", 21, "M", "Student", true);
-   //   DAOAuthGestor.getDAOAuthgestor().deleteUser();
-    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, 100, 200, 2020, 11, 02);
-   // 	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient2, 100, 200, 2020, 11, 02);
-   // 	DAOPositiveGestor.getDAOPositivegestor().deletePositive(1);
+    	login(11111111, "1234");
+    	DAOAuthGestor.getDAOAuthgestor().deleteUser();
 
+    	//DAOAuthGestor.getDAOAuthgestor().registerUser(5555,"manolo", "1234", "jon@gmail.com", 21, "M", "Student", true);
+    	//DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, 100, 200, 2020, 11, 02);
+    	//DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient2, 100, 200, 2020, 11, 02);
 
     }
 
-    public static void usersList()
-    {
-        try {
-            DAOAuthGestor.getDAOAuthgestor().selectUsers();
-            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente inicie la sesion del usuario.
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-    }
+    //USER METHODS
     
-    public static void positivesList()
+    public static void login (int idCard, String password)
     {
-        try {
-            DAOPositiveGestor.getDAOPositivegestor().selectPositives();
-            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente inicie la sesion del usuario.
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        usersList();
+        for (User aux : users)
+        {
+            if(aux.getIdCard()==idCard && aux.getPassword().equals(password))
+            {
+                userLogged.setIdCard(aux.getIdCard());
+                userLogged.setUsername(aux.getUsername());
+                userLogged.setPassword(aux.getPassword());
+                userLogged.setEmail(aux.getEmail());
+                userLogged.setAge(aux.getAge());
+                userLogged.setGender(aux.getGender());
+                userLogged.setOccupation(aux.getOccupation());
+                userLogged.setAdmin(aux.isAdmin());
+            }
         }
-        
-    }
-    
-    public void iniciarSesion (String idCard, String password)
-    {
-        try {
-            DAOAuthGestor.getDAOAuthgestor().logIn(idCard, password);
-            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente inicie la sesion del usuario.
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        System.out.println("Usuario login: "+userLogged.getUsername());
     }
 
     public boolean registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
@@ -110,7 +87,6 @@ public class DAOGestor {
         try {
 
             registered = DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, username, password, email, age, gender, occupation, admin);
-            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -118,19 +94,47 @@ public class DAOGestor {
         return registered;
     }
 
-    public void deleteUser(String userName, String password) {
+    public void deleteUser() {
         try {
-            DAOAuthGestor.getDAOAuthgestor().deleteUser(userName, password);
+            DAOAuthGestor.getDAOAuthgestor().deleteUser();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void registerPositive(User patient, double latitude, double longitude, int year, int month, int day) {
+    public static void usersList()
+    {
+        try {
+            users.clear();
+            DAOAuthGestor.getDAOAuthgestor().selectUsers();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    //COVID-19 METHODS
+
+    public boolean registerPositive(User patient, double latitude, double longitude, int year, int month, int day) {
+        boolean ok = false;
         try {
         	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, latitude, longitude, year, month, day);
+        	ok = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return ok;
+    }
+
+    public static void positivesList()
+    {
+        try {
+            DAOPositiveGestor.getDAOPositivegestor().selectPositives();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 }

@@ -15,9 +15,9 @@ public class PositiveGestor {
         }
         return positivegestor;
     }
-    public void RegisterPositive(User patient, double latitude, double longitude, int year, int month, int day) {
+    public boolean RegisterPositive(User patient, double latitude, double longitude, int year, int month, int day) {
         // This method will call DAOgestor in order to register a positive in the database
-        DAOGestor.getDAOgestor().registerPositive(patient, latitude, longitude, year, month, day);
+        boolean ok = DAOGestor.getDAOgestor().registerPositive(patient, latitude, longitude, year, month, day);
     }
 
     public void SearchPositives() {

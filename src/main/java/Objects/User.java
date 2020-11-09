@@ -9,20 +9,20 @@ public class User {
 
 	@Getter @Setter @NonNull
     @PrimaryKey
-    private int idCard;
+    public int idCard;
     @Getter @Setter @NonNull
-    private String username;
+    public String username;
 	@Getter @Setter @NonNull
-    private String password;
+    public String password;
     @Getter @Setter @NonNull
-    private String email;
+    public String email;
     @Getter @Setter @NonNull
-    private int age;
+    public int age;
     @Getter @Setter @NonNull
-    private String gender;
+    public String gender;
     @Getter @Setter @NonNull
-    private String occupation;
+    public String occupation;
     @Getter @Setter @NonNull
-    private boolean admin=false;
+    public boolean admin=false;
 
 }

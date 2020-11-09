@@ -1,6 +1,7 @@
 package JettyServer;
 
 import AppService.AuthGestor;
+import DAO.DAOGestor;
 import Objects.User;
 import com.google.gson.Gson;
 
@@ -16,18 +17,20 @@ import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
+import static java.lang.Integer.parseInt;
+
 public class LoginServlet extends HttpServlet {
     private static String correctLogin = "true";
     private User userLogged = null;
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        String user = request.getParameter("user");
+        String idCard = request.getParameter("idCard");
         String pass = request.getParameter("pass");
-        System.out.println("I have received: User: " + user + " Password: " + pass);
+        System.out.println("I have received: User: " + idCard + " Password: " + pass);
 
-        userLogged = AuthGestor.getGestorAuth().logIn(user, pass);
+        AuthGestor.getGestorAuth().logIn(Integer.parseInt(idCard), pass);
 
-        String userJsonString = new Gson().toJson(userLogged);
+        String userJsonString = new Gson().toJson(DAOGestor.userLogged);
         //Prepare the response and return it
         final ByteBuffer content = ByteBuffer.wrap(userJsonString.getBytes(StandardCharsets.UTF_8));
         final AsyncContext async = request.startAsync();

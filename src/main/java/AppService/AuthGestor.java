@@ -18,12 +18,11 @@ public class AuthGestor {
         return authgestor;
     }
 
-    public User logIn (String userName, String password)
+    public User logIn (int idCard, String password)
     {
         try {
-            DAOGestor.getDAOgestor().iniciarSesion(userName, password);
-            // usuario = new User(72835127, "juan", "juansolozabal1@gmail.com", 22, "Male", "Student", false);
-            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente inicie la sesion del usuario.
+            DAOGestor.getDAOgestor().login(idCard, password);
+
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -35,7 +34,6 @@ public class AuthGestor {
     {
         try {
             registered = DAOGestor.getDAOgestor().registrarse(idCard, username,password, email, age, gender, occupation, admin);
-            // Aqui ira el metodo en el que se asociara con el gestorDAO, que sera el que especificamente registre al usuario.
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -43,8 +41,8 @@ public class AuthGestor {
         return registered;
     }
 
-    public void deleteCount(String userName, String password)
+    public void deleteCount()
     {
-        DAOGestor.getDAOgestor().deleteUser(userName, password);
+        DAOGestor.getDAOgestor().deleteUser();
     }
 }
