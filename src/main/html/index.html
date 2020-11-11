@@ -14,6 +14,8 @@
 	<script type="text/javascript" src="../javascript/registerController.js"></script>
 	<script type="text/javascript" src="../javascript/registerPositiveController.js"></script>
 	<script type="text/javascript" src="../javascript/map.js"></script>
+	<script type="text/javascript" src="../javascript/charts.js"></script>
+	<script type="text/javascript" src="../javascript/statsController.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<!-- LEAFLET -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -22,6 +24,8 @@
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 	  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 	  crossorigin=""></script>
+	<!-- CHART.JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="topBar" class="navbar navbar-expand-sm bg-dark navbar-dark d-flex">
@@ -48,6 +52,13 @@
 		    </div>
 		    <div id="page2" class="p-3">
 		    	<h2>Statistics</h2><hr>
+		    	<div id="statsButtons" class="col-md-12">
+		    		<button id="statsButton1" onclick="paintChart(1)" class="btn btn-primary col-md-2">By age</button>
+		    		<button id="statsButton2" onclick="paintChart(2)" class="btn btn-primary col-md-2">By gender</button>
+		    		<button id="statsButton3" onclick="paintChart(3)" class="btn btn-primary col-md-2">By occupation</button>
+		    		<button id="statsButton4" onclick="paintChart(4)" class="btn btn-primary col-md-2">Temporal graph</button>
+		    	</div>
+		    	<canvas id="myChart"></canvas>
 		    </div>
 		    <div id="page3" class="p-3">
 		    	<form class="row col-md-12 mx-auto p-3" onsubmit="regPositive()" name="formRegPositive">
@@ -253,6 +264,7 @@
 	</div>
 	<script type="text/javascript">
 		initMap1();
+		//readStats();
 		navigate(1);
 	</script>
 </body>
