@@ -11,3 +11,7 @@ function navigate(page){
    	initMap2();
   }
 }
+
+function showStats(page){
+	
+}

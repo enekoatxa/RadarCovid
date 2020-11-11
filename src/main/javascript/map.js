@@ -42,6 +42,6 @@ function initMap2(){
 	});
 }
 
-function paintPositive(lati, long){
-	L.marker([lati, long]).addTo(mymap);
+function paintPositive(positive){
+	L.marker([positive.split(",")[0], positive.split(",")[1]]).addTo(mymap);
 }
