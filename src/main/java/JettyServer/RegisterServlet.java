@@ -15,12 +15,12 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 public class RegisterServlet extends HttpServlet {
-    private static String correctRegistration = "true";
+    private String correctRegistration = "true";
     private boolean registeredBoolean = false;
     private String registered;
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        String idCardString = request.getParameter("idCard");
+        String idCard = request.getParameter("idCard");
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
         String email = request.getParameter("email");
@@ -28,9 +28,7 @@ public class RegisterServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String occupation = request.getParameter("occupation");
 
-        Integer idCard;
-        idCard = Integer.parseInt(idCardString);
-        registeredBoolean = AuthGestor.getGestorAuth().register(idCard, user, pass, email, age, gender, occupation, false);
+        registeredBoolean = AuthGestor.getGestorAuth().register(Integer.parseInt(idCard), user, pass, email, age, gender, occupation, false);
         System.out.println("I have received: User: " + user + " ,Password: " + pass + " ,Email: " + email + " ,Age: " + age + " ,Gender: " + gender + " ,Occupation: " + occupation);
         //Kalkulatu erregistroa ondo egin den edo ez
         //correctRegistration=callToRegistrationManager();

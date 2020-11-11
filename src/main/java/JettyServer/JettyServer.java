@@ -38,6 +38,8 @@ public class JettyServer {
         servletHandler.addServletWithMapping(LoginServlet.class, "/login");
         servletHandler.addServletWithMapping(RegisterServlet.class, "/register");
         servletHandler.addServletWithMapping(PositiveAddServlet.class, "/addPositive");
+        servletHandler.addServletWithMapping(StatsServlet.class, "/stats");
+        servletHandler.addServletWithMapping(PositivesServlet.class, "/positives");
 
         server.start();
     }
