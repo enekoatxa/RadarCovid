@@ -13,6 +13,7 @@ import javax.jdo.annotations.*;
 		this.month=month;
 		this.day=day;
 	}
+	// This class uses the Lombok plugin
 	@Getter @Setter
 	@PrimaryKey
     @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)

@@ -9,6 +9,7 @@ public class AuthGestor {
     boolean registered = false;
     private AuthGestor(){}
 
+    //Singleton Patron
     public static AuthGestor getGestorAuth()
     {
         synchronized(AuthGestor.class)
