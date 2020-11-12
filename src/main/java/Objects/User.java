@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 public class User {
 
-    //This class uses Lombok plugin
+    
 	@Getter @Setter @NonNull
     @PrimaryKey
     public int idCard;
