@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 public class User {
 
-    //This class uses Lombok
 	@Getter @Setter @NonNull
     @PrimaryKey
     public int idCard;
