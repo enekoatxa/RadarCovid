@@ -8,9 +8,10 @@ function readStats(){
 
 	http.onreadystatechange = (e) => {
 	  allStatsJSON = (http.responseText);
-	  ageData  = allStatsJSON.split(";")[0];
-	  genderData = allStatsJSON.split(";")[1];
-	  occuData = allStatsJSON.split(";")[2];
-	  tempoData = allStatsJSON.split(";")[3];
+	  allStatsJSON = allStatsJSON.replaceAll("\"", "");
+	  ageData  = JSON.parse(allStatsJSON.split(";")[0]);
+	  genderData = JSON.parse(allStatsJSON.split(";")[1]);
+	  occuData = JSON.parse(allStatsJSON.split(";")[2]);
+	  tempoData = JSON.parse(allStatsJSON.split(";")[3]);
 	}
 }
