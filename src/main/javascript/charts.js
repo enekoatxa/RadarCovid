@@ -16,6 +16,7 @@ function paintChart(number){
     updateStatButtons(1);
 	switch (number){
 		case 1:
+		console.log(ageData);
 		myChart = new Chart(ctx, {
 	    type: 'bar',
 	    data: {
@@ -38,6 +39,7 @@ function paintChart(number){
 	});
 			break;
 		case 2:
+		console.log(genderData);
 		updateStatButtons(2);
 		myChart = new Chart(ctx, {
 	    type: 'bar',
@@ -71,6 +73,7 @@ function paintChart(number){
 	});
 		break;
 		case 3:
+		console.log(occuData);
 		updateStatButtons(3);
 		myChart = new Chart(ctx, {
 	    type: 'bar',
@@ -108,6 +111,7 @@ function paintChart(number){
 	});
 		break;
 		case 4:
+		console.log(tempoData);
 		updateStatButtons(4);
 		myChart = new Chart(ctx, {
 	    type: 'line',

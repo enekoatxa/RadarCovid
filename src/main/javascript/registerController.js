@@ -8,20 +8,11 @@ function register(){
 	var occupation = document.forms["formRegister"]["occupation"].value;
 
 	// call Java method with this data
-	var formData = new FormData();
-	
-	formData.append("idCard", idCard);
-	formData.append("user", user);
-	formData.append("pass", pass);
-	formData.append("email", email);
-	formData.append("age", age);
-	formData.append("gender", gender);
-	formData.append("occupation", occupation);
+	var params = "?idCard="+idCard+"&user="+user+"&pass="+pass+"&email="+email+"&age="+age+"&gender="+gender+"&occupation="+occupation;
 	const http = new XMLHttpRequest();
 	const url = 'http://127.0.0.1:8090/register';
-
-	http.open("GET", url, true);
-	http.send(formData);
+	http.open("GET", url+params, true);
+	http.send();
 
 	http.onreadystatechange = (e) => {
 	  console.log(http.responseText)

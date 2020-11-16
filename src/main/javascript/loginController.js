@@ -1,18 +1,14 @@
 function login(){
-	var user = document.forms["formLogin"]["user"].value;
+	var idCard = document.forms["formLogin"]["idCard"].value;
 	var pass = document.forms["formLogin"]["pass"].value;
-
-	var formData = new FormData();
+	var params = "?idCard="+idCard+"&pass="+pass;
 	
-	formData.append("user", user);
-	formData.append("pass", pass);
 	const http = new XMLHttpRequest();
+	http.onreadystatechange = function() {
+		console.log(http.responseText);
+	}
 	const url = 'http://127.0.0.1:8090/login';
 
-	http.open("GET", url, true);
-	http.send(formData);
-
-	http.onreadystatechange = (e) => {
-	  alert(http.responseText);
-	}
+	http.open("GET", url+params, true);
+	http.send();
 }
