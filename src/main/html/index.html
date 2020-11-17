@@ -33,7 +33,9 @@
 		<span id="loggedAs" class="navbar-text">You are not logged in</span>
 		<span id="logButtons" class="ml-auto">
 			<button id="btnLogin" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Log in</button>
+			<button id="btnLogout" class="btn btn-primary" onclick="logOut()">Log out</button>
 			<button id="btnRegister" class="btn btn-secondary" data-toggle="modal" data-target="#modalRegister">Register</button>
+
 		</span>
 	</div>
 	<div class="row">
@@ -161,25 +163,25 @@
 	      </div>
 
 	      <div class="modal-body">
-	        <form name="formLogin">
+	        <div name="formLogin">
 	        	  <div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">ID Card Number</span>
 				    </div>
-				 	<input type="text" class="form-control" id="idCard" name="idCard" required><br>
+				 	<input type="text" class="form-control" id="idCardLog" name="idCardLog" required><br>
 				</div>
 
 				<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Password</span>
 				    </div>
-				 	<input type="text" class="form-control" id="pass" name="pass" required><br>
+				 	<input type="text" class="form-control" id="passLog" name="passLog" required><br>
 				</div>
 				<div class="modal-footer">
-			      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      <button onclick="hideLogin()" type="button" class="btn btn-danger">Close</button>
 			      <button onclick="login()" class="btn btn-primary">Log in</button>
 			    </div>
-	        </form>
+	        </div>
 	      </div>
 	    </div>
 	  </div>
@@ -194,46 +196,46 @@
 	      </div>
 
 	      <div class="modal-body">
-	       	<form name="formRegister">
+	       	<div name="formRegister">
 	       	<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">ID card</span>
 				    </div>
-				 	<input type="text" class="form-control" id="idCard" name="idCard" required><br>
+				 	<input type="text" class="form-control" id="idCardReg" name="idCardReg" required><br>
 				</div> 
 	       		<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Username</span>
 				    </div>
-				 	<input type="text" class="form-control" id="user" name="user" required><br>
+				 	<input type="text" class="form-control" id="userReg" name="userReg" required><br>
 				</div>
 
 				<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Password</span>
 				    </div>
-				 	<input type="text" class="form-control" id="pass" name="pass" required><br>
+				 	<input type="text" class="form-control" id="passReg" name="passReg" required><br>
 				</div>
 
 				<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Email</span>
 				    </div>
-				 	<input type="email" class="form-control" id="email" name="email" required><br>
+				 	<input type="email" class="form-control" id="emailReg" name="emailReg" required><br>
 				</div>
 
 				<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Age</span>
 				    </div>
-				 	<input type="number" class="form-control" id="age" name="age" required><br>
+				 	<input type="number" class="form-control" id="ageReg" name="ageReg" required><br>
 				</div>
 
 				<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Gender</span>
 				    </div>
-				 	<select class="form-control" id="gender">
+				 	<select class="form-control" id="genderReg">
 					  <option>Male</option>
 					  <option>Female</option>
 					  <option>Other</option>
@@ -244,7 +246,7 @@
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Occupation</span>
 				    </div>
-				 	<select class="form-control" id="occupation">
+				 	<select class="form-control" id="occupationReg">
 					  <option>Student</option>
 					  <option>First Sector worker</option>
 					  <option>Industry worker</option>
@@ -254,10 +256,10 @@
 				</div>
 
 				<div class="modal-footer">
-			      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      <button onclick="hideRegister()" type="button" class="btn btn-danger">Close</button>
 			      <button onclick="register()" class="btn btn-primary">Register</button>
 			    </div>
-	       	</form>
+	       	</div>
 	      </div>
 	    </div>
 	  </div>
@@ -265,6 +267,7 @@
 	<script type="text/javascript">
 		initMap1();
 		readStats();
+		//readAllPositives();
 		navigate(1);
 	</script>
 </body>
