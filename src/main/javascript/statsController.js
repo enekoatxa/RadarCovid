@@ -7,10 +7,16 @@ function readStats(){
 	http.send();
 
 	http.onreadystatechange = (e) => {
-	  allStatsJSON = (http.responseText);
-	  ageData  = allStatsJSON.split(";")[0];
-	  genderData = allStatsJSON.split(";")[1];
-	  occuData = allStatsJSON.split(";")[2];
-	  tempoData = allStatsJSON.split(";")[3];
+		if(http.readyState === XMLHttpRequest.DONE){
+			if(http.responseText=="False"){
+		  	alert("There was an error reading the statistics, please reload the page");
+		  } else {
+		  	allStatsJSON = JSON.parse(http.responseText);
+			ageData  = allStatsJSON.ageStats;
+			genderData = allStatsJSON.genderStats;
+			occuData = allStatsJSON.occuStats;
+			tempoData = allStatsJSON.timeStats;
+		  }
+		}
 	}
 }
