@@ -54,9 +54,7 @@ public class DAOGestor {
     	DAOAuthGestor.getDAOAuthgestor().registerUser(894, "primero", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
     	login(894, "1234");
     	DAOAuthGestor.getDAOAuthgestor().deleteUser();
-    	DAOAuthGestor.getDAOAuthgestor().registerUser(897, "segundo", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
-        login(897, "1234");
-        DAOAuthGestor.getDAOAuthgestor().deleteUser();
+
 
 
 
