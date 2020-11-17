@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
         out.setWriteListener(new WriteListener() {
             @Override
             public void onWritePossible() throws IOException {
+                response.addHeader("Access-Control-Allow-Origin", "*");
                 while (out.isReady()) {
                     if (!content.hasRemaining()) {
                         response.setStatus(200);

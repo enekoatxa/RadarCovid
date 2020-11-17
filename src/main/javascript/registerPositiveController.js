@@ -6,30 +6,38 @@ function regPositive(){
 
 	//call Java method with this data
 	//change loggeds in as text
-	var formData = new FormData();
-	
-	formData.append("user", user);
-	formData.append("pass", pass);
-	formData.append("longitude", coords.split(",")[0]);
-	formData.append("latitude", coords.split(",")[1]);
-	formData.append("year", year);
-	formData.append("month", month);
-	formData.append("day", day);
+
+	var params = "?user="+user+"&pass="+pass+"&longitude="+longitude+"&latitude="+latitude+"&year="+year+"&month="+month+"&day="+day;
 	const http = new XMLHttpRequest();
 	const url = 'http://127.0.0.1:8090/addPositive';
-	http.open("GET", url, true);
-	http.send(formData);
+	http.open("GET", url+params, true);
+	http.send();
 
 	http.onreadystatechange = (e) => {
-	  console.log(http.responseText)
+		if(http.readyState === XMLHttpRequest.DONE){
+			if(http.responseText=="False"){
+		  	alert("There was an error registering the positive, please try again");
+		  } else {
+		  	//Correct positive registration
+		  }
+		}
 	}
 }
 
 function fillData(user){
-	$("#infoUser").text(user.username);
-	$("#infoEmail").text(user.email);
-	$("#infoIdCard").text(user.idCard);
-	$("#infoAge").text(user.age);
-	$("#infoGender").text(user.gender);
-	$("#infoOccupation").text(user.occupation);
+	if(user==""){
+		$("#infoUser").text(" XXXXX ");
+		$("#infoEmail").text(" XXXXX ");
+		$("#infoIdCard").text(" XXXXX ");
+		$("#infoAge").text(" XXXXX ");
+		$("#infoGender").text(" XXXXX ");
+		$("#infoOccupation").text(" XXXXX ");
+	} else {
+		$("#infoUser").text(user.username);
+		$("#infoEmail").text(user.email);
+		$("#infoIdCard").text(user.idCard);
+		$("#infoAge").text(user.age);
+		$("#infoGender").text(user.gender);
+		$("#infoOccupation").text(user.occupation);
+	}
 }

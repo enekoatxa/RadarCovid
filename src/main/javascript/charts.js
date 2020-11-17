@@ -1,10 +1,13 @@
 var myChart;
-var ageData = Array.from({length: 100}, () => Math.floor(Math.random() * 1000));
-var genderData = [15, 2, 16];
-var occuData = [15, 2, 16, 75, 100];
-var tempoData = [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3];
+var ageData = "";
+var genderData = "";
+var occuData = "";
+var tempoData = "";
 
 function paintChart(number){
+	if(ageData=="" || genderData =="" || occuData =="" || tempoData ==""){
+		alert("The data is loading, please wait")
+	} else {
 	Chart.defaults.global.elements.rectangle.backgroundColor = 'rgba(54, 162, 235, 0.2)';
 	Chart.defaults.global.elements.rectangle.borderColor = 'rgba(54, 162, 235, 1)';
 	Chart.defaults.global.elements.line.backgroundColor = 'rgba(54, 162, 235, 0.2)';
@@ -16,6 +19,7 @@ function paintChart(number){
     updateStatButtons(1);
 	switch (number){
 		case 1:
+		console.log(ageData);
 		myChart = new Chart(ctx, {
 	    type: 'bar',
 	    data: {
@@ -38,6 +42,7 @@ function paintChart(number){
 	});
 			break;
 		case 2:
+		console.log(genderData);
 		updateStatButtons(2);
 		myChart = new Chart(ctx, {
 	    type: 'bar',
@@ -71,6 +76,7 @@ function paintChart(number){
 	});
 		break;
 		case 3:
+		console.log(occuData);
 		updateStatButtons(3);
 		myChart = new Chart(ctx, {
 	    type: 'bar',
@@ -108,6 +114,7 @@ function paintChart(number){
 	});
 		break;
 		case 4:
+		console.log(tempoData);
 		updateStatButtons(4);
 		myChart = new Chart(ctx, {
 	    type: 'line',
@@ -133,6 +140,7 @@ function paintChart(number){
 	});
 		break;
 	}	
+	}
 }
 
 function updateStatButtons(activeButton){
