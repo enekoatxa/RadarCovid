@@ -18,7 +18,7 @@ function regPositive(){
 			if(http.responseText=="False"){
 		  	alert("There was an error registering the positive, please try again");
 		  } else {
-		  	//Correct positive registration
+		  	alert("The registration was correct!");
 		  }
 		}
 	}

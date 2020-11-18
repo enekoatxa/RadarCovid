@@ -8,10 +8,12 @@ function readAllPositives(){
 	http.send();
 
 	http.onreadystatechange = (e) => {
-	  allPositivesJSON = (http.responseText);
-	  allPositivesArray = allPositivesJSON.split(";");
-	  for (var i = 0; i < allPositivesArray.length; i++) {
-	  	paintPositive(allPositivesArray[i]);
-	  }
+		if(http.readyState === XMLHttpRequest.DONE){
+			allPositivesJSON = (http.responseText);
+			allPositivesArray = allPositivesJSON.split(";");
+			for (var i = 0; i < allPositivesArray.length; i++) {
+				paintPositive(allPositivesArray[i]);
+			}
+		}
 	}
 }

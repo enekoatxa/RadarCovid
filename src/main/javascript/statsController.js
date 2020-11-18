@@ -8,15 +8,15 @@ function readStats(){
 
 	http.onreadystatechange = (e) => {
 		if(http.readyState === XMLHttpRequest.DONE){
-			if(http.responseText=="False"){
-		  	alert("There was an error reading the statistics, please reload the page");
-		  } else {
-		  	allStatsJSON = JSON.parse(http.responseText);
-			ageData  = allStatsJSON.ageStats;
-			genderData = allStatsJSON.genderStats;
-			occuData = allStatsJSON.occuStats;
-			tempoData = allStatsJSON.timeStats;
-		  }
+			if(http.responseText=="false"){
+			  	alert("There was an error reading the statistics, please reload the page");
+			} else {
+			  	allStatsJSON = JSON.parse(http.responseText);
+				ageData  = allStatsJSON.ageStats;
+				genderData = allStatsJSON.genderStats;
+				occuData = allStatsJSON.occuStats;
+				tempoData = allStatsJSON.timeStats;
+			}
 		}
 	}
 }
