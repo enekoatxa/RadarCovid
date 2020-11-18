@@ -9,22 +9,22 @@ function register(){
 
 	// call Java method with this data
 	if(idCard!="" && user!="" && pass!="" && email!="" && age!="" && gender!="" && occupation!=""){
-	var params = "?idCard="+idCard+"&user="+user+"&pass="+pass+"&email="+email+"&age="+age+"&gender="+gender+"&occupation="+occupation;
-	const http = new XMLHttpRequest();
-	const url = 'http://127.0.0.1:8090/register';
-	http.open("GET", url+params, true);
-	http.send();
+		var params = "?idCard="+idCard+"&user="+user+"&pass="+pass+"&email="+email+"&age="+age+"&gender="+gender+"&occupation="+occupation;
+		const http = new XMLHttpRequest();
+		const url = 'http://127.0.0.1:8090/register';
+		http.open("GET", url+params, true);
+		http.send();
 
-	http.onreadystatechange = (e) => {
-		if(http.readyState === XMLHttpRequest.DONE){
-			if(http.responseText=="false"){
-		  	alert("There was a problem while registering, please try again")
-		  } else {
-		  	//CORRECT REGISTER
-		  }
+		http.onreadystatechange = (e) => {
+			if(http.readyState === XMLHttpRequest.DONE){
+				if(http.responseText=="false"){
+			  	alert("There was a problem while registering, please try again");
+			  } else {
+			  	alert("The registration was correct, now you can log in!");
+			  	hideRegister();
+			  }
+			}
 		}
-	}
-		hideRegister();
 	} else {
 		alert("Some input is not complete, try again");
 	}

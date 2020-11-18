@@ -40,11 +40,11 @@
 	</div>
 	<div class="row">
 		<div id="leftBar" class="col-md-2 list-group p-0 bg-dark vh-100">
-		  <a onclick="navigate(1);" id="lb1" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Map</a>
-		  <a onclick="navigate(2);" id="lb2" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Statistics</a>
-		  <a onclick="navigate(3);" id="lb3" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Register positive</a>
-		  <a onclick="navigate(4);" id="lb4" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Information</a>
-		  <a onclick="navigate(5);" id="lb5" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Creators</a>
+		  <a id="nav1" onclick="navigate(1);" id="lb1" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Map</a>
+		  <a id="nav2" onclick="navigate(2);" id="lb2" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Statistics</a>
+		  <a id="nav3" onclick="navigate(3);" id="lb3" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Register positive</a>
+		  <a id="nav4" onclick="navigate(4);" id="lb4" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Information</a>
+		  <a id="nav5" onclick="navigate(5);" id="lb5" class="list-group-item list-group-item-action pl-5 bg-dark text-light">Creators</a>
 		</div>
 
 		<div id="content" class="col-10 bg-light">
@@ -63,7 +63,7 @@
 		    	<canvas id="myChart"></canvas>
 		    </div>
 		    <div id="page3" class="p-3">
-		    	<form class="row col-md-12 mx-auto p-3" name="formRegPositive">
+		    	<div class="row col-md-12 mx-auto p-3" name="formRegPositive">
 		    		<div class="col-md-9">
 		    			<h2>Register Positive</h2><hr>
 			    	<p>As a registered user, in this page you can register a positive case of Covid-19. The data will be stored in our database, and will be used anonymously to create statistics.</p><hr>
@@ -105,7 +105,7 @@
 		    			<div id="alertZone"></div>
 		    			<button onclick="regPositive()" class="btn btn-primary mx-auto">Register Positive</button>
 		    		</div>
-		    	</form>
+		    	</div>
 		    </div>
 		    <div id="page4" class="p-3">
 		    	<h2>Information</h2><hr>
