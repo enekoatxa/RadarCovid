@@ -15,13 +15,12 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 public class StatsServlet extends HttpServlet {
-    private static String correctLogin = "true";
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("I have received a petition.");
 
-        String statsJsonString = new Gson().toJson(StatsGestor.getStatsgestor().obtainStatistics());
+        String statsJsonString = StatsGestor.getStatsgestor().obtainStatistics();
         final ByteBuffer content = ByteBuffer.wrap(statsJsonString.getBytes(StandardCharsets.UTF_8));
         final AsyncContext async = request.startAsync();
         final ServletOutputStream out = response.getOutputStream();

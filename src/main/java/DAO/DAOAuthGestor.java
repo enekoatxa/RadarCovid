@@ -23,10 +23,11 @@ public class DAOAuthGestor {
     }
     public boolean registerUser(int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
 	{
-		boolean ok=false;
-			selectUsers();
+		boolean ok=true;
+		DAOGestor.usersList();
+
 			for (User aux1 : DAOGestor.users){
-				if (aux1.getIdCard() == idCard) ok = false;
+				if (aux1.getIdCard()==idCard) ok = false;
 			}
 			if (ok==false){
 				System.out.println("Usuario ya registrado");
@@ -42,9 +43,7 @@ public class DAOAuthGestor {
 					User user = new User(idCard, username, password, email, age, gender, occupation, admin);
 					persistentManager.makePersistent(user);
 					System.out.println("- Inserted into db user: " + user.getIdCard());
-					DAOGestor.login(idCard,password);
 					transaction.commit();
-					ok = true;
 				} catch (Exception ex) {
 					System.err.println("* Exception inserting user into db: " + ex.getMessage());
 				} finally {
@@ -53,10 +52,12 @@ public class DAOAuthGestor {
 					}
 					persistentManagerFactory.close();
 					persistentManager.close();
+					DAOGestor.usersList();
 					return ok;
 				}
 			}
 	}
+
     public void deleteUser()
 	{
 		 try
@@ -93,7 +94,6 @@ public class DAOAuthGestor {
 		//Insert data in the DB
 		PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
 		Transaction transaction = persistentManager.currentTransaction();
-
 
 		 	try {
             	transaction.begin();

@@ -51,11 +51,15 @@ public class DAOGestor {
     	}
     	System.out.println("---------------------------------------------");
 
-    	login(11111111, "1234");
+    	DAOAuthGestor.getDAOAuthgestor().registerUser(894, "primero", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
+    	login(894, "1234");
     	DAOAuthGestor.getDAOAuthgestor().deleteUser();
 
+
+
+
     	//DAOAuthGestor.getDAOAuthgestor().registerUser(5555,"manolo", "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	//DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, 100, 200, 2020, 11, 02);
+    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged, 100, 200, 2020, 11, 02);
     	//DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient2, 100, 200, 2020, 11, 02);
 
     }
@@ -64,7 +68,6 @@ public class DAOGestor {
     
     public static void login (int idCard, String password)
     {
-        usersList();
         for (User aux : users)
         {
             if(aux.getIdCard()==idCard && aux.getPassword().equals(password))
@@ -77,9 +80,10 @@ public class DAOGestor {
                 userLogged.setGender(aux.getGender());
                 userLogged.setOccupation(aux.getOccupation());
                 userLogged.setAdmin(aux.isAdmin());
+                System.out.println("Usuario login: "+userLogged.getUsername());
             }
         }
-        System.out.println("Usuario login: "+userLogged.getUsername());
+
     }
 
     public boolean registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
@@ -87,6 +91,7 @@ public class DAOGestor {
         try {
 
             registered = DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, username, password, email, age, gender, occupation, admin);
+            usersList();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -97,6 +102,14 @@ public class DAOGestor {
     public void deleteUser() {
         try {
             DAOAuthGestor.getDAOAuthgestor().deleteUser();
+            userLogged.setIdCard(1);
+            userLogged.setUsername("");
+            userLogged.setPassword("");
+            userLogged.setEmail("");
+            userLogged.setAge(1);
+            userLogged.setGender("");
+            userLogged.setOccupation("");
+            userLogged.setAdmin(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

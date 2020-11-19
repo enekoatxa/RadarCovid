@@ -1,10 +1,13 @@
 var myChart;
-var ageData = Array.from({length: 100}, () => Math.floor(Math.random() * 1000));
-var genderData = [15, 2, 16];
-var occuData = [15, 2, 16, 75, 100];
-var tempoData = [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3];
+var ageData = "";
+var genderData = "";
+var occuData = "";
+var tempoData = "";
 
 function paintChart(number){
+	if(ageData=="" || genderData =="" || occuData =="" || tempoData ==""){
+		alert("The data is loading, please wait")
+	} else {
 	Chart.defaults.global.elements.rectangle.backgroundColor = 'rgba(54, 162, 235, 0.2)';
 	Chart.defaults.global.elements.rectangle.borderColor = 'rgba(54, 162, 235, 1)';
 	Chart.defaults.global.elements.line.backgroundColor = 'rgba(54, 162, 235, 0.2)';
@@ -137,6 +140,7 @@ function paintChart(number){
 	});
 		break;
 	}	
+	}
 }
 
 function updateStatButtons(activeButton){

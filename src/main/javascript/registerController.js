@@ -1,20 +1,35 @@
 function register(){
-	var idCard = document.forms["formRegister"]["idCard"].value;
-	var user = document.forms["formRegister"]["user"].value;
-	var pass = document.forms["formRegister"]["pass"].value;
-	var email = document.forms["formRegister"]["email"].value;
-	var age = document.forms["formRegister"]["age"].value;
-	var gender = document.forms["formRegister"]["gender"].value;
-	var occupation = document.forms["formRegister"]["occupation"].value;
+	var idCard = document.getElementById("idCardReg").value;
+	var user = document.getElementById("userReg").value;
+	var pass = document.getElementById("passReg").value;
+	var email = document.getElementById("emailReg").value;
+	var age = document.getElementById("ageReg").value;
+	var gender = document.getElementById("genderReg").value;
+	var occupation = document.getElementById("occupationReg").value;
 
 	// call Java method with this data
-	var params = "?idCard="+idCard+"&user="+user+"&pass="+pass+"&email="+email+"&age="+age+"&gender="+gender+"&occupation="+occupation;
-	const http = new XMLHttpRequest();
-	const url = 'http://127.0.0.1:8090/register';
-	http.open("GET", url+params, true);
-	http.send();
+	if(idCard!="" && user!="" && pass!="" && email!="" && age!="" && gender!="" && occupation!=""){
+		var params = "?idCard="+idCard+"&user="+user+"&pass="+pass+"&email="+email+"&age="+age+"&gender="+gender+"&occupation="+occupation;
+		const http = new XMLHttpRequest();
+		const url = 'http://127.0.0.1:8090/register';
+		http.open("GET", url+params, true);
+		http.send();
 
-	http.onreadystatechange = (e) => {
-	  console.log(http.responseText)
+		http.onreadystatechange = (e) => {
+			if(http.readyState === XMLHttpRequest.DONE){
+				if(http.responseText=="false"){
+			  	alert("There was a problem while registering, please try again");
+			  } else {
+			  	alert("The registration was correct, now you can log in!");
+			  	hideRegister();
+			  }
+			}
+		}
+	} else {
+		alert("Some input is not complete, try again");
 	}
+}
+
+function hideRegister(){
+	$('#modalRegister').modal('hide');
 }

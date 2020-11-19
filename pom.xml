@@ -134,5 +134,21 @@
                 </plugins>
             </build>
         </profile>
+         <!-- run as 'mvn exec:java -PJettyServer' -->
+        <profile>
+            <id>JettyServer</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <configuration>
+                            <mainClass>JettyServer.JettyServer</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
      </profiles> 
 </project>

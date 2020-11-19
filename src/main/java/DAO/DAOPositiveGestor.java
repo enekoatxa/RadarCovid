@@ -39,6 +39,7 @@ public class DAOPositiveGestor {
 	                if (transaction.isActive()) {
 	                	transaction.rollback();
 	                }
+					persistentManagerFactory.close();
 	                persistentManager.close();
 	            }
 	}

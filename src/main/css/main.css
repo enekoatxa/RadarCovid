@@ -1,3 +1,9 @@
 #map2{
 	height: 480px;
 }
+#btnLogout{
+    display:none;
+}
+#nav3{
+    display:none;
+}

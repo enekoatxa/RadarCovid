@@ -20,19 +20,22 @@ import java.nio.charset.StandardCharsets;
 import static java.lang.Integer.parseInt;
 
 public class LoginServlet extends HttpServlet {
-    private static String correctLogin = "true";
     private User userLogged = null;
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String idCard = request.getParameter("idCard");
         String pass = request.getParameter("pass");
         System.out.println("I have received: User: " + idCard + " Password: " + pass);
+        String responseString ="";
+        try{
+            AuthGestor.getGestorAuth().logIn(Integer.parseInt(idCard), pass);
+            responseString = new Gson().toJson(DAOGestor.userLogged);
+        } catch (NumberFormatException e){
+            responseString = "false";
+        }
 
-        AuthGestor.getGestorAuth().logIn(Integer.parseInt(idCard), pass);
-
-        String userJsonString = new Gson().toJson(DAOGestor.userLogged);
         //Prepare the response and return it
-        final ByteBuffer content = ByteBuffer.wrap(userJsonString.getBytes(StandardCharsets.UTF_8));
+        final ByteBuffer content = ByteBuffer.wrap(responseString.getBytes(StandardCharsets.UTF_8));
         final AsyncContext async = request.startAsync();
         final ServletOutputStream out = response.getOutputStream();
         out.setWriteListener(new WriteListener() {

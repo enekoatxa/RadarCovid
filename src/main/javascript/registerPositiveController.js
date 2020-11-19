@@ -14,15 +14,30 @@ function regPositive(){
 	http.send();
 
 	http.onreadystatechange = (e) => {
-	  console.log(http.responseText)
+		if(http.readyState === XMLHttpRequest.DONE){
+			if(http.responseText=="False"){
+		  	alert("There was an error registering the positive, please try again");
+		  } else {
+		  	alert("The registration was correct!");
+		  }
+		}
 	}
 }
 
 function fillData(user){
-	$("#infoUser").text(user.username);
-	$("#infoEmail").text(user.email);
-	$("#infoIdCard").text(user.idCard);
-	$("#infoAge").text(user.age);
-	$("#infoGender").text(user.gender);
-	$("#infoOccupation").text(user.occupation);
+	if(user==""){
+		$("#infoUser").text(" XXXXX ");
+		$("#infoEmail").text(" XXXXX ");
+		$("#infoIdCard").text(" XXXXX ");
+		$("#infoAge").text(" XXXXX ");
+		$("#infoGender").text(" XXXXX ");
+		$("#infoOccupation").text(" XXXXX ");
+	} else {
+		$("#infoUser").text(user.username);
+		$("#infoEmail").text(user.email);
+		$("#infoIdCard").text(user.idCard);
+		$("#infoAge").text(user.age);
+		$("#infoGender").text(user.gender);
+		$("#infoOccupation").text(user.occupation);
+	}
 }
