@@ -32,10 +32,7 @@ public class DAOGestor {
 
     public static void main(String[] args)
     {
-        /*
-         * USER(idCard, username, password, email, age, gender, occupation, admin)
-         * POSITIVE(user, latitude, longitude, year, month, day)
-         */
+
     	System.out.println("-----------------USERS IN BD-----------------");
     	usersList();
     	for(User aux: users){
@@ -44,7 +41,7 @@ public class DAOGestor {
     	}
     	System.out.println("---------------------------------------------");
     	System.out.println("---------------POSITIVES IN BD---------------");
-    	//positivesList();
+    	positivesList();
     	for(Positive aux: positives){
     		System.out.println("IdPositive: "+aux.getIdPositive()+", Latitude: "+ aux.getLatitude()+
     				", Longitude: "+ aux.getLongitude() + ", Year: "+ aux.getYear()+ ", Month: "+ aux.getMonth()+ ", Day: "+aux.getDay());
@@ -52,21 +49,15 @@ public class DAOGestor {
     	System.out.println("---------------------------------------------");
 
     	DAOAuthGestor.getDAOAuthgestor().registerUser(894, "primero", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
-    	login(894, "1234");
-    	DAOAuthGestor.getDAOAuthgestor().deleteUser();
-
-
-
-
-    	//DAOAuthGestor.getDAOAuthgestor().registerUser(5555,"manolo", "1234", "jon@gmail.com", 21, "M", "Student", true);
-    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged, 100, 200, 2020, 11, 02);
-    	//DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient2, 100, 200, 2020, 11, 02);
+    	DAOGestor.getDAOgestor().login(894, "1234");
+    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged.getIdCard(), 100, 200, 2020, 11, 02);
+    	DAOGestor.getDAOgestor().deleteUser();
 
     }
 
     //USER METHODS
     
-    public static void login (int idCard, String password)
+    public void login (int idCard, String password)
     {
         for (User aux : users)
         {
@@ -129,10 +120,10 @@ public class DAOGestor {
 
     //COVID-19 METHODS
 
-    public boolean registerPositive(User patient, double latitude, double longitude, int year, int month, int day) {
+    public boolean registerPositive(int patientId, double latitude, double longitude, int year, int month, int day) {
         boolean ok = false;
         try {
-        	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, latitude, longitude, year, month, day);
+        	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patientId, latitude, longitude, year, month, day);
         	ok = true;
         } catch (Exception e) {
             e.printStackTrace();

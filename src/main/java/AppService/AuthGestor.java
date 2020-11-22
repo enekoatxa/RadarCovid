@@ -4,7 +4,7 @@ import DAO.DAOGestor;
 import Objects.User;
 
 public class AuthGestor {
-    private static AuthGestor authgestor = null;
+    public static AuthGestor authgestor = null;
     User usuario = null;
     boolean registered = false;
     private AuthGestor(){}
