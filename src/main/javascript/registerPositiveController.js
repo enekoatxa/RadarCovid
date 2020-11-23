@@ -1,13 +1,17 @@
 function regPositive(){
-	var coords = document.forms["formRegPositive"]["positiveCoords"].value.replace("Long: ", "").replace("Lat: ","");
-	var year = document.forms["formRegPositive"]["positiveDate"].value.split("-")[0];
-	var month = document.forms["formRegPositive"]["positiveDate"].value.split("-")[1];
-	var day = document.forms["formRegPositive"]["positiveDate"].value.split("-")[2];
+	var idCard = document.getElementById("idCardReg").value;
+	var coords = document.getElementById("positiveCoords").value.replace("Long: ", "").replace("Lat: ","");
+	var longitude = coords.split(",")[0];
+	var latitude = coords.split(",")[1];
+	var date = document.getElementById("positiveDate").value.replaceAll(" ","").replaceAll("-", "/");
+	var year = date.split("/")[0];
+	var month = date.split("/")[1];
+	var day = date.split("/")[2];
 
 	//call Java method with this data
 	//change loggeds in as text
 
-	var params = "?user="+user+"&pass="+pass+"&longitude="+longitude+"&latitude="+latitude+"&year="+year+"&month="+month+"&day="+day;
+	var params = "?user="+loggedUser.username+"&pass="+loggedUser.pass+"&longitude="+longitude+"&latitude="+latitude+"&year="+year+"&month="+month+"&day="+day;
 	const http = new XMLHttpRequest();
 	const url = 'http://127.0.0.1:8090/addPositive';
 	http.open("GET", url+params, true);

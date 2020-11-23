@@ -22,8 +22,9 @@ public class DAOStatsGestor {
         return gestorStatsDAO;
     }
 
-    public ArrayList<Positive> readPositivesByGender(String gender){
-        ArrayList<Positive> ret = new ArrayList<Positive>();
+    public int[] readPositivesByGender(){
+        int[] ret = new int[3];
+        ret[0]=0; ret[1]=0; ret[2]=0;
         PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
         //Insert data in the DB
         PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -32,8 +33,17 @@ public class DAOStatsGestor {
             transaction.begin();
             @SuppressWarnings("unchecked")
             Query <Positive> q1 = persistentManager.newQuery("SELECT FROM " + Positive.class.getName());
+            q1.filter("this.patient.gender == 'Male'");
             for (Positive aux : q1.executeList()) {
-                ret.add(aux);
+                ret[0]++;
+            }
+            q1.filter("this.patient.gender == 'Female'");
+            for (Positive aux : q1.executeList()) {
+                ret[1]++;
+            }
+            q1.filter("this.patient.gender == 'Other'");
+            for (Positive aux : q1.executeList()) {
+                ret[2]++;
             }
             transaction.commit();
 
@@ -49,8 +59,55 @@ public class DAOStatsGestor {
         return ret;
     }
 
-    public ArrayList<Positive> readPositivesByOccupation(String occupation){
-        ArrayList<Positive> ret = new ArrayList<Positive>();
+    public int[] readPositivesByOccupation(){
+        int[] ret = new int[5];
+        PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+        //Insert data in the DB
+        PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+        Transaction transaction = persistentManager.currentTransaction();
+        try {
+            transaction.begin();
+            @SuppressWarnings("unchecked")
+            Query <Positive> q1 = persistentManager.newQuery("SELECT FROM " + Positive.class.getName());
+            q1.filter("this.patient.occupation == 'First sector'");
+            for (Positive aux : q1.executeList()) {
+                ret[0]++;
+            }
+            q1.filter("this.patient.occupation == 'Second sector'");
+            for (Positive aux : q1.executeList()) {
+                ret[1]++;
+            }
+            q1.filter("this.patient.occupation == 'Third sector'");
+            for (Positive aux : q1.executeList()) {
+                ret[2]++;
+            }
+            q1.filter("this.patient.occupation == 'Unoccupied'");
+            for (Positive aux : q1.executeList()) {
+                ret[3]++;
+            }
+            q1.filter("this.patient.occupation == 'Student'");
+            for (Positive aux : q1.executeList()) {
+                ret[4]++;
+            }
+            transaction.commit();
+
+        } catch (Exception ex) {
+            System.err.println("* Exception selecting positives from db: " + ex.getMessage());
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            persistentManager.close();
+            persistentManagerFactory.close();
+        }
+        return ret;
+    }
+
+    public int[] readPositivesByAge(){
+        int[] ret = new int[100];
+        for (int i=0; i<100; i++){
+            ret[i]=0;
+        }
         PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
         //Insert data in the DB
         PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -60,7 +117,37 @@ public class DAOStatsGestor {
             @SuppressWarnings("unchecked")
             Query <Positive> q1 = persistentManager.newQuery("SELECT FROM " + Positive.class.getName());
             for (Positive aux : q1.executeList()) {
-                ret.add(aux);
+                ret[aux.getPatient().age-1]++;
+            }
+            transaction.commit();
+
+        } catch (Exception ex) {
+            System.err.println("* Exception selecting positives from db: " + ex.getMessage());
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            persistentManager.close();
+            persistentManagerFactory.close();
+        }
+        return ret;
+    }
+
+    public int[] readPositivesByTime(){
+        int[] ret = new int[18];
+        for (int i=0; i<18; i++){
+            ret[i]=0;
+        }
+        PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+        //Insert data in the DB
+        PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+        Transaction transaction = persistentManager.currentTransaction();
+        try {
+            transaction.begin();
+            @SuppressWarnings("unchecked")
+            Query <Positive> q1 = persistentManager.newQuery("SELECT FROM " + Positive.class.getName());
+            for (Positive aux : q1.executeList()) {
+                ret[((aux.getYear()%2020)*12)+aux.getMonth()-1]++;
             }
             transaction.commit();
 
@@ -76,12 +163,3 @@ public class DAOStatsGestor {
         return ret;
     }
 }
-
-
-//   Query<Positive> q1 = DAOGestor.persistentManager.newQuery("SELECT p.* FROM " + Positive.class.getName() + " p, " + User.class.getName() +
-//         " u WHERE u.idCard=p.idCard AND u.occupation='"+ occupation +"';");
-//   Query<Positive> q1 = DAOGestor.persistentManager.newQuery("SELECT p.* FROM " + Positive.class.getName() + " p, " + User.class.getName() +
-//         " u WHERE u.idCard=p.idCard AND u.gender='"+ gender +"';");
-
-//select COUNT(*), YEAR, MONTH from POSITIVE group by YEAR, MONTH;
-// SELECT COUNT(*), USER.AGE FROM POSITIVE, USER WHERE USER.IDCARD=POSITIVE.IDCARD group by USER.AGE;

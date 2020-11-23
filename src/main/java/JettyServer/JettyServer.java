@@ -8,7 +8,7 @@ import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
 public class JettyServer {
 
-    private Server server;
+    private static Server server;
 
     public static void main (String[]args){
         JettyServer server = new JettyServer();
@@ -19,7 +19,7 @@ public class JettyServer {
         }
     }
 
-    void start() throws Exception {
+    public static void start() throws Exception {
 
         int maxThreads = 100;
         int minThreads = 1;
@@ -44,7 +44,7 @@ public class JettyServer {
         server.start();
     }
 
-    void stop() throws Exception {
+    public static void stop() throws Exception {
         server.stop();
     }
 }

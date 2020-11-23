@@ -1,5 +1,6 @@
 package JettyServer;
 
+import AppService.PositiveGestor;
 import AppService.StatsGestor;
 import DAO.DAOGestor;
 import Objects.User;
@@ -23,8 +24,8 @@ public class PositivesServlet extends HttpServlet {
 
         System.out.println("I have received a petition.");
 
-        String statsJsonString = new Gson().toJson(StatsGestor.getStatsgestor().obtainStatistics());
-        final ByteBuffer content = ByteBuffer.wrap(statsJsonString.getBytes(StandardCharsets.UTF_8));
+        String positivesJsonString = new Gson().toJson(PositiveGestor.getPositivegestor().searchPositives());
+        final ByteBuffer content = ByteBuffer.wrap(positivesJsonString.getBytes(StandardCharsets.UTF_8));
         final AsyncContext async = request.startAsync();
         final ServletOutputStream out = response.getOutputStream();
         out.setWriteListener(new WriteListener() {

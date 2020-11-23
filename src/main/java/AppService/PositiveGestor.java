@@ -1,6 +1,7 @@
 package AppService;
 
 import DAO.DAOGestor;
+import DAO.DAOPositiveGestor;
 import Objects.User;
 
 public class PositiveGestor {
@@ -15,14 +16,15 @@ public class PositiveGestor {
         }
         return positivegestor;
     }
-    public boolean RegisterPositive(User patient, double latitude, double longitude, int year, int month, int day) {
+
+    public boolean registerPositive(User patient, double latitude, double longitude, int year, int month, int day) {
+
         // This method will call DAOgestor in order to register a positive in the database
-        return DAOGestor.getDAOgestor().registerPositive(patient, latitude, longitude, year, month, day);
+        return DAOGestor.getDAOgestor().registerPositive(patient.getIdCard(), latitude, longitude, year, month, day);
     }
 
-    public void SearchPositives() {
-        // This method will be used to receive all the positives in accordance to the parameterse given by the user
-        // Obviously, it won't be a void method, but it is now like that because it is nothing but the skeleton
+    public String searchPositives() {
+        return DAOPositiveGestor.getDAOPositivegestor().selectPositives();
     }
 }
 
