@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="../javascript/loginController.js"></script>
 	<script type="text/javascript" src="../javascript/registerController.js"></script>
 	<script type="text/javascript" src="../javascript/registerPositiveController.js"></script>
+	<script type="text/javascript" src="../javascript/mapController.js"></script>
 	<script type="text/javascript" src="../javascript/map.js"></script>
 	<script type="text/javascript" src="../javascript/charts.js"></script>
 	<script type="text/javascript" src="../javascript/statsController.js"></script>
@@ -248,9 +249,9 @@
 				    </div>
 				 	<select class="form-control" id="occupationReg">
 					  <option>Student</option>
-					  <option>First Sector worker</option>
-					  <option>Industry worker</option>
-					  <option>Third sector worker</option>
+					  <option>First sector</option>
+					  <option>Second sector</option>
+					  <option>Third sector</option>
 					  <option>Unoccupied</option>
 					</select>
 				</div>
@@ -267,7 +268,7 @@
 	<script type="text/javascript">
 		initMap1();
 		readStats();
-		//readAllPositives();
+		readAllPositives();
 		navigate(1);
 	</script>
 </body>

@@ -9,7 +9,7 @@ function readAllPositives(){
 
 	http.onreadystatechange = (e) => {
 		if(http.readyState === XMLHttpRequest.DONE){
-			allPositivesJSON = (http.responseText);
+			allPositivesJSON = (http.responseText).replaceAll("\"", "");
 			allPositivesArray = allPositivesJSON.split(";");
 			for (var i = 0; i < allPositivesArray.length; i++) {
 				paintPositive(allPositivesArray[i]);

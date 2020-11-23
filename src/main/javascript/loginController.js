@@ -47,4 +47,5 @@ function logOut(){
 	$('#nav3').hide();
 	$("#loggedAs").text("You are not logged in");
 	alert("You succesfully logged out");
+	$('#nav1').click();
 }
