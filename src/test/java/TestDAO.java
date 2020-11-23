@@ -13,13 +13,13 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TestDAOGestor {
+public class TestDAO {
 
     @Mock
     User user1;
 
     public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(TestDAOGestor.class);
+        return new JUnit4TestAdapter(TestDAO.class);
     }
 
 
