@@ -11,7 +11,7 @@ public class DAOPositiveGestor {
     private DAOPositiveGestor() {
     }
 
-    protected static DAOPositiveGestor getDAOPositivegestor()
+    public static DAOPositiveGestor getDAOPositivegestor()
     {
         synchronized(DAOPositiveGestor.class)
         {
@@ -44,11 +44,10 @@ public class DAOPositiveGestor {
 	            }
 	}
 
-    public void selectPositives()
+    public String selectPositives()
 	{
-
+			String ret = "";
 			PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-	        //Insert data in the DB
 			PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
 			Transaction transaction = persistentManager.currentTransaction();
 		 	try {
@@ -56,8 +55,9 @@ public class DAOPositiveGestor {
             	@SuppressWarnings("unchecked")
     			Query <Positive> q1 = persistentManager.newQuery("SELECT FROM " + Positive.class.getName());
     		    for (Positive aux : q1.executeList()) {
-    				DAOGestor.positives.add(aux);
+					ret += aux.getLatitude() + "," + aux.getLongitude() + ";";
     			}
+    		    ret=ret.substring(0, ret.length()-1);
     		    transaction.commit();
 
             } catch (Exception ex) {
@@ -69,7 +69,6 @@ public class DAOPositiveGestor {
                 persistentManager.close();
                 persistentManagerFactory.close();
             }
-
-		
+		return ret;
 	}
 }
