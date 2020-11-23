@@ -58,7 +58,7 @@ public class TestAppService {
 
     @Test
     public void testRegisterPositive(){
-        assertTrue(positiveGestor.getPositivegestor().RegisterPositive(user1.getIdCard(), 100, 200, 2020, 12, 30));
+        assertTrue(positiveGestor.getPositivegestor().registerPositive(user1.getIdCard(), 100, 200, 2020, 12, 30));
     }
 
     @Test
