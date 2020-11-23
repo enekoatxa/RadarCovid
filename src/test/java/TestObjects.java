@@ -10,8 +10,8 @@ import static org.junit.Assert.assertFalse;
 
 public class TestObjects {
 
-    User user1 = new User(1, "aa", "1234", "aa@gmal.com", 22, "Male", "Student", false);
-    Positive positive1 = new Positive(user1.getIdCard(), 11, 11, 2020, 11, 23);
+    User user1 = new User(1, "aa", "1234", "aa@gmail.com", 22, "Male", "Student", false);
+    Positive positive1 = new Positive(user1, 11, 11, 2020, 11, 23);
 
 
     @Test
@@ -30,16 +30,12 @@ public class TestObjects {
 
     @Test
     public void testPositive(){
-        assertEquals(user1.getIdCard(), positive1.getPatientId());
+        assertEquals(user1.getIdCard(), positive1.getPatient().getIdCard());
         assertEquals(11, positive1.getLatitude(), 10);
         assertEquals(11, positive1.getLongitude(), 10);
         assertEquals(2020, positive1.getYear());
         assertEquals(11, positive1.getMonth());
         assertEquals(23, positive1.getDay());
-        ;
-
-
-
     }
 
     @After

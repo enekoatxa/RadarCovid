@@ -18,8 +18,9 @@ public class DAOPositiveGestor {
         }
         return gestorPositiveDAO;
     }
-    protected void registerPositive(int patientId, double latitude, double longitude, int year, int month, int day)
+    protected boolean registerPositive(User patient, double latitude, double longitude, int year, int month, int day)
 	{
+		boolean ok = false;
 
 				PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		        //Insert data in the DB
@@ -27,10 +28,11 @@ public class DAOPositiveGestor {
 			 	Transaction transaction = persistentManager.currentTransaction();
 	            try {
 	                transaction.begin();
-	                Positive posit = new Positive(patientId, latitude, longitude, year, month, day);
+	                Positive posit = new Positive(patient, latitude, longitude, year, month, day);
 	                persistentManager.makePersistent(posit);
-	                System.out.println("- Inserted into db positive: " + posit.getPatientId());
+	                System.out.println("- Inserted into db positive: " + posit.getPatient().getIdCard());
 	                transaction.commit();
+	                ok = true;
 
 	            } catch (Exception ex) {
 	                System.err.println("* Exception inserting positive into db: " + ex.getMessage());
@@ -40,6 +42,7 @@ public class DAOPositiveGestor {
 	                }
 					persistentManagerFactory.close();
 	                persistentManager.close();
+	                return ok;
 	            }
 	}
 
