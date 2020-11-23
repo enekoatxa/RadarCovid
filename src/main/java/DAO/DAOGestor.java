@@ -50,7 +50,8 @@ public class DAOGestor {
 
     	DAOAuthGestor.getDAOAuthgestor().registerUser(894, "primero", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
     	DAOGestor.getDAOgestor().login(894, "1234");
-    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged.getIdCard(), 100, 200, 2020, 11, 02);
+
+    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged, 100, 200, 2020, 11, 02);
     	DAOGestor.getDAOgestor().deleteUser();
 
     }
@@ -120,11 +121,11 @@ public class DAOGestor {
 
     //COVID-19 METHODS
 
-    public boolean registerPositive(int patientId, double latitude, double longitude, int year, int month, int day) {
+    public boolean registerPositive(User patient, double latitude, double longitude, int year, int month, int day) {
         boolean ok = false;
         try {
-        	DAOPositiveGestor.getDAOPositivegestor().registerPositive(patientId, latitude, longitude, year, month, day);
-        	ok = true;
+            ok = DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, latitude, longitude, year, month, day);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

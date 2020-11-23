@@ -5,8 +5,8 @@ import javax.jdo.annotations.*;
 @PersistenceCapable
 @AllArgsConstructor
   public class Positive {
-    public Positive(int patientId, double latitude, double longitude, int year, int month, int day) {
-		this.patientId = patientId;
+    public Positive(User patient, double latitude, double longitude, int year, int month, int day) {
+        this.patient=patient;
 		this.latitude=latitude;
 		this.longitude=longitude;
 		this.year=year;
@@ -18,7 +18,8 @@ import javax.jdo.annotations.*;
     @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
     private long idPositive;
     @Getter @Setter
-    private int patientId;
+    @Column(name="idCard")
+    private User patient;
     @Getter @Setter
     private double latitude;
     @Getter @Setter
