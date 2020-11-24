@@ -18,27 +18,24 @@ public class AuthGestor {
         return authgestor;
     }
 
-    public User logIn (int idCard, String password)
+    public String logIn (int idCard, String password)
     {
         try {
-            DAOGestor.getDAOgestor().login(idCard, password);
-
+            return DAOGestor.getDAOgestor().login(idCard, password);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return usuario;
+        return "error";
     }
 
-    public boolean register (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
+    public String register (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
     {
         try {
-            registered = DAOGestor.getDAOgestor().registrarse(idCard, username,password, email, age, gender, occupation, admin);
+           return DAOGestor.getDAOgestor().registrarse(idCard, username,password, email, age, gender, occupation, admin);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return registered;
+        return "error";
     }
 
     public void deleteCount()

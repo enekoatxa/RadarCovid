@@ -21,19 +21,13 @@ public class DAOAuthGestor {
         }
         return gestorAuthDAO;
     }
-    public boolean registerUser(int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
+    public String registerUser(int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
 	{
-		boolean ok=true;
 		DAOGestor.usersList();
 
 			for (User aux1 : DAOGestor.users){
-				if (aux1.getIdCard()==idCard) ok = false;
+				if (aux1.getIdCard()==idCard) return "errorUser";
 			}
-			if (ok==false){
-				System.out.println("Usuario ya registrado");
-				return ok;
-
-			}else {
 				PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 				//Insert data in the DB
 				PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -53,9 +47,8 @@ public class DAOAuthGestor {
 					persistentManagerFactory.close();
 					persistentManager.close();
 					DAOGestor.usersList();
-					return ok;
+					return "true";
 				}
-			}
 	}
 
     public void deleteUser()
