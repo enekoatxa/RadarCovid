@@ -26,4 +26,9 @@ public class User {
     @Getter @Setter @NonNull
     public boolean admin=false;
 
+    @Override
+    public String toString() {
+        return  "{\"idCard\":" + idCard + ", \"username\":\"" + username + "\", \"password\":\"" + password + "\", \"email\":\"" + email +
+                "\", \"age\":" + age + ", \"gender\":\"" + gender + "\", \"occupation\":\"" + occupation + "\", \"admin\":\"" + admin + "\"}";
+    }
 }
