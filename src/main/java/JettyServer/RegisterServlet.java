@@ -15,9 +15,6 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 public class RegisterServlet extends HttpServlet {
-    private String correctRegistration = "true";
-    private boolean registeredBoolean = false;
-    private String registered;
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String idCard = request.getParameter("idCard");
@@ -27,21 +24,16 @@ public class RegisterServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
         String gender = request.getParameter("gender");
         String occupation = request.getParameter("occupation");
-
-        registeredBoolean = AuthGestor.getGestorAuth().register(Integer.parseInt(idCard), user, pass, email, age, gender, occupation, false);
+        String responseString="";
+        try{
+            responseString = AuthGestor.getGestorAuth().register(Integer.parseInt(idCard), user, pass, email, age, gender, occupation, false);
+        } catch (NumberFormatException ex){
+            responseString = "errorNumber";
+        }
         System.out.println("I have received: User: " + user + " ,Password: " + pass + " ,Email: " + email + " ,Age: " + age + " ,Gender: " + gender + " ,Occupation: " + occupation);
-        //Kalkulatu erregistroa ondo egin den edo ez
-        //correctRegistration=callToRegistrationManager();
-        if(registeredBoolean) {
-            registered = "true";
-        }
-        else {
-            registered = "false";
-        }
 
-        String registeredJsonString = new Gson().toJson(registered);
         //Prepare the response and return it
-        final ByteBuffer content = ByteBuffer.wrap(registeredJsonString.getBytes(StandardCharsets.UTF_8));
+        final ByteBuffer content = ByteBuffer.wrap(responseString.getBytes(StandardCharsets.UTF_8));
         final AsyncContext async = request.startAsync();
         final ServletOutputStream out = response.getOutputStream();
         out.setWriteListener(new WriteListener() {

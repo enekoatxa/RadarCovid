@@ -17,9 +17,13 @@ function register(){
 
 		http.onreadystatechange = (e) => {
 			if(http.readyState === XMLHttpRequest.DONE){
-				if(http.responseText=="false"){
+				if(http.responseText=="error"){
 			  	alert("There was a problem while registering, please try again");
-			  } else {
+			  } else if (http.responseText=="errorNumber"){
+			  	alert("The id card must be an 8 digit number, and age should be a number");
+			  } else if (http.responseText=="errorUser"){
+			  	alert("This user already exists in the database, try again");
+			  } else if(http.responseText=="true"){
 			  	alert("The registration was correct, now you can log in!");
 			  	hideRegister();
 			  }

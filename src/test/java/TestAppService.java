@@ -47,7 +47,7 @@ public class TestAppService {
 
     @Test
     public void testRegisterLoginDelete(){
-        assertTrue(authGestor.getGestorAuth().register(user1.getIdCard(), user1.getUsername(), user1.getPassword(), user1.getEmail(), user1.getAge(), user1.getGender(), user1.getOccupation(), user1.isAdmin()));
+        assertEquals(authGestor.getGestorAuth().register(user1.getIdCard(), user1.getUsername(), user1.getPassword(), user1.getEmail(), user1.getAge(), user1.getGender(), user1.getOccupation(), user1.isAdmin()),"true");
 
         authGestor.getGestorAuth().logIn(user1.getIdCard(), user1.getPassword());
         assertEquals(user1.getUsername(), daoGestor.userLogged.getUsername());

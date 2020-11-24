@@ -58,37 +58,43 @@ public class DAOGestor {
 
     //USER METHODS
     
-    public void login (int idCard, String password)
+    public String login (int idCard, String password)
     {
+        usersList();
         for (User aux : users)
         {
-            if(aux.getIdCard()==idCard && aux.getPassword().equals(password))
+            if(aux.getIdCard()==idCard)
             {
-                userLogged.setIdCard(aux.getIdCard());
-                userLogged.setUsername(aux.getUsername());
-                userLogged.setPassword(aux.getPassword());
-                userLogged.setEmail(aux.getEmail());
-                userLogged.setAge(aux.getAge());
-                userLogged.setGender(aux.getGender());
-                userLogged.setOccupation(aux.getOccupation());
-                userLogged.setAdmin(aux.isAdmin());
-                System.out.println("Usuario login: "+userLogged.getUsername());
+                if (aux.getPassword().equals(password)){
+                    userLogged.setIdCard(aux.getIdCard());
+                    userLogged.setUsername(aux.getUsername());
+                    userLogged.setPassword(aux.getPassword());
+                    userLogged.setEmail(aux.getEmail());
+                    userLogged.setAge(aux.getAge());
+                    userLogged.setGender(aux.getGender());
+                    userLogged.setOccupation(aux.getOccupation());
+                    userLogged.setAdmin(aux.isAdmin());
+                    return userLogged.toString();
+                } else {
+                    return "errorPass";
+                }
             }
         }
-
+        return "errorUser";
     }
 
-    public boolean registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
+    public String registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
     {
+        String response="";
         try {
-
-            registered = DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, username, password, email, age, gender, occupation, admin);
+            response = DAOAuthGestor.getDAOAuthgestor().registerUser(idCard, username, password, email, age, gender, occupation, admin);
+            if(response.equals("true"))
+                registered = true;
             usersList();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return registered;
+        return response;
     }
 
     public void deleteUser() {

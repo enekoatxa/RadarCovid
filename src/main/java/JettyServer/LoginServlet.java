@@ -28,10 +28,9 @@ public class LoginServlet extends HttpServlet {
         System.out.println("I have received: User: " + idCard + " Password: " + pass);
         String responseString ="";
         try{
-            AuthGestor.getGestorAuth().logIn(Integer.parseInt(idCard), pass);
-            responseString = new Gson().toJson(DAOGestor.userLogged);
+            responseString = AuthGestor.getGestorAuth().logIn(Integer.parseInt(idCard), pass);
         } catch (NumberFormatException e){
-            responseString = "false";
+            responseString = "errorNumber";
         }
 
         //Prepare the response and return it
