@@ -5,8 +5,13 @@ import DAO.DAOGestor;
 import DAO.DAOStatsGestor;
 import Objects.Positive;
 import Objects.User;
+import com.github.javatlacati.contiperf.PerfTest;
+import com.github.javatlacati.contiperf.Required;
+import com.github.javatlacati.contiperf.junit.ContiPerfRule;
 import junit.framework.JUnit4TestAdapter;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -27,9 +32,30 @@ public class TestAppService {
     PositiveGestor positiveGestor;
     StatsGestor statsGestor;
 
+    //For StatsByGender
+    int[] ret = new int[3];
+    int numberOfOtherBefore;
+
+    //For StatsByAge
+    int[] ret2 = new int[100];
+    int numberOfAge60Before;
+
+    //For StatsByOccupation
+    int[] ret3 = new int[5];
+    int numberOfUnoccupiedBefore;
+
+    //For StatsByTime
+    int[] ret4 = new int[18];
+    int numberOf20201230Before;
+
+
+
     public static junit.framework.Test suite() {
         return new JUnit4TestAdapter(TestAppService.class);
     }
+
+    @Rule
+    public ContiPerfRule i = new ContiPerfRule();
 
     @Before
     public void setUp() {
@@ -42,6 +68,21 @@ public class TestAppService {
         when(user1.getGender()).thenReturn("Male");
         when(user1.getOccupation()).thenReturn("Student");
         when(user1.isAdmin()).thenReturn(false);
+
+        ret = statsGestor.getStatsgestor().statsByGender();
+        numberOfOtherBefore = ret[2];
+
+        ret2 = statsGestor.getStatsgestor().statsByAge();
+        numberOfAge60Before = ret2[59];
+
+        ret3 = statsGestor.getStatsgestor().statsByOccupation();
+        numberOfUnoccupiedBefore = ret3[3];
+
+        ret4 = statsGestor.getStatsgestor().statsByTime();
+        numberOf20201230Before = ret4[2020%2020*12+12-1];
+
+
+
 
     }
 
@@ -58,36 +99,65 @@ public class TestAppService {
 
     /*
     @Test
+    @PerfTest(invocations = 5)
+    @Required(max = 1200, average = 250)
     public void testRegisterPositive(){
-        User posit = new User((int) Math.floor(Math.random() * (1 - 200 + 1) + 200), "test", "1234", "landerp@opendeusto.es", 22, "Male", "Student", false);
+        User posit = new User((int) Math.floor(Math.random() * (1 - 200 + 1) + 200), "test", "1234", "landerp@opendeusto.es", 60, "Other", "Unoccupied", false);
         assertTrue(positiveGestor.getPositivegestor().registerPositive(posit, 100, 200, 2020, 12, 30));
     }
 
     @Test
+    @PerfTest(invocations = 5)
+    @Required(max = 1200, average = 250)
     public void testStatsByGender(){
-        int[] ret = statsGestor.getStatsgestor().statsByGender();
-        assertTrue(ret[0]>0);
+        ret = statsGestor.getStatsgestor().statsByGender();
+        int numberOfOtherAfter = ret[2];
+
+        assertEquals(numberOfOtherAfter, numberOfOtherBefore++);
     }
 
     @Test
+    @PerfTest(invocations = 5)
+    @Required(max = 1200, average = 250)
     public void testStatsByAge(){
-        int[] ret = statsGestor.getStatsgestor().statsByAge();
-        assertTrue(ret[0]==9);
+        ret2 = statsGestor.getStatsgestor().statsByAge();
+        int numberOfAge60After = ret2[59];
+
+        assertEquals(numberOfAge60After,numberOfAge60Before++);
     }
 
     @Test
+    @PerfTest(invocations = 5)
+    @Required(max = 1200, average = 250)
     public void testStatsByOccupation(){
-        int[] ret = statsGestor.getStatsgestor().statsByOccupation();
-        assertTrue(ret[1]>0);
+        ret3 = statsGestor.getStatsgestor().statsByOccupation();
+        int numberOfUnoccupiedAfter = ret3[3];
+
+        assertEquals(numberOfUnoccupiedAfter, numberOfUnoccupiedBefore++);
     }
 
     @Test
+    @PerfTest(invocations = 5)
+    @Required(max = 1200, average = 250)
     public void testStatsByTime(){
-        int[] ret = statsGestor.getStatsgestor().statsByTime();
-        assertTrue(ret[0]==3);
+        ret4 = statsGestor.getStatsgestor().statsByTime();
+        int numberOf20201230After = ret4[2020%2020*12+12-1];
+
+        assertEquals(numberOf20201230After, numberOf20201230Before++);
     }
+
 
      */
+
+    @After
+    public void after(){
+        ret=null;
+        ret2=null;
+        ret3=null;
+        ret4=null;
+    }
+
+
 
 
 }

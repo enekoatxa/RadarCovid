@@ -1,9 +1,9 @@
 import DAO.DAOGestor;
 import Objects.User;
+import com.github.javatlacati.contiperf.PerfTest;
+import com.github.javatlacati.contiperf.Required;
+import com.github.javatlacati.contiperf.junit.ContiPerfRule;
 import junit.framework.JUnit4TestAdapter;
-import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
-import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -16,10 +16,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class TestDAO {
-
-
 
     @Mock
     User user1;
@@ -27,7 +25,6 @@ public class TestDAO {
     public static junit.framework.Test suite() {
         return new JUnit4TestAdapter(TestDAO.class);
     }
-
 
     @Before
     public void setUp() {
@@ -42,7 +39,6 @@ public class TestDAO {
         when(user1.isAdmin()).thenReturn(false);
     }
 
-
     @Test
     public void testRegisterLoginDeleteUser() throws InterruptedException {
         DAOGestor.getDAOgestor().registrarse(user1.getIdCard(), user1.getUsername(), user1.getPassword(), user1.getEmail(), user1.getAge(), user1.getGender(), user1.getOccupation(), user1.isAdmin());
@@ -51,7 +47,7 @@ public class TestDAO {
         assertEquals(user1.getUsername(), DAOGestor.userLogged.getUsername());
         DAOGestor.getDAOgestor().deleteUser();
         assertEquals("", DAOGestor.userLogged.getUsername());
-        Thread.sleep(200);
+        Thread.sleep(121);
     }
 
     /*
