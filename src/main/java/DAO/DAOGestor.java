@@ -48,11 +48,11 @@ public class DAOGestor {
     	}
     	System.out.println("---------------------------------------------");
 
-    	DAOAuthGestor.getDAOAuthgestor().registerUser(894, "primero", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
-    	DAOGestor.getDAOgestor().login(894, "1234");
+    	//DAOAuthGestor.getDAOAuthgestor().registerUser(894, "primero", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
+    	System.out.println(DAOGestor.getDAOgestor().login(999, "1234"));
 
-    	DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged, 100, 200, 2020, 11, 02);
-    	DAOGestor.getDAOgestor().deleteUser();
+    	//DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged, 100, 200, 2020, 11, 02);
+    	//DAOGestor.getDAOgestor().deleteUser();
 
     }
 
