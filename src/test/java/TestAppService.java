@@ -54,8 +54,6 @@ public class TestAppService {
         return new JUnit4TestAdapter(TestAppService.class);
     }
 
-    @Rule
-    public ContiPerfRule i = new ContiPerfRule();
 
     @Before
     public void setUp() {
@@ -99,8 +97,6 @@ public class TestAppService {
 
     /*
     @Test
-    @PerfTest(invocations = 5)
-    @Required(max = 1200, average = 250)
     public void testRegisterPositive(){
         User posit = new User((int) Math.floor(Math.random() * (1 - 200 + 1) + 200), "test", "1234", "landerp@opendeusto.es", 60, "Other", "Unoccupied", false);
         assertTrue(positiveGestor.getPositivegestor().registerPositive(posit, 100, 200, 2020, 12, 30));
@@ -117,8 +113,6 @@ public class TestAppService {
     }
 
     @Test
-    @PerfTest(invocations = 5)
-    @Required(max = 1200, average = 250)
     public void testStatsByAge(){
         ret2 = statsGestor.getStatsgestor().statsByAge();
         int numberOfAge60After = ret2[59];
@@ -127,8 +121,6 @@ public class TestAppService {
     }
 
     @Test
-    @PerfTest(invocations = 5)
-    @Required(max = 1200, average = 250)
     public void testStatsByOccupation(){
         ret3 = statsGestor.getStatsgestor().statsByOccupation();
         int numberOfUnoccupiedAfter = ret3[3];
@@ -137,8 +129,6 @@ public class TestAppService {
     }
 
     @Test
-    @PerfTest(invocations = 5)
-    @Required(max = 1200, average = 250)
     public void testStatsByTime(){
         ret4 = statsGestor.getStatsgestor().statsByTime();
         int numberOf20201230After = ret4[2020%2020*12+12-1];

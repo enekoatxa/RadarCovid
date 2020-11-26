@@ -1,7 +1,12 @@
 import JettyServer.JettyServer;
 
+import com.github.javatlacati.contiperf.PerfTest;
+import com.github.javatlacati.contiperf.Required;
+import com.github.javatlacati.contiperf.junit.ContiPerfRule;
+import junit.framework.JUnit4TestAdapter;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -12,6 +17,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class TestJettyServer {
+
+    public static junit.framework.Test suite() {
+        return new JUnit4TestAdapter(TestAppService.class);
+    }
 
     public void startServer() throws Exception {
         JettyServer.start();
@@ -26,7 +35,12 @@ public class TestJettyServer {
         startServer();
     }
 
+    @Rule
+    public ContiPerfRule i = new ContiPerfRule();
+
     @Test
+    @PerfTest(invocations = 5, threads = 5)
+    @Required(max = 1200, average = 250)
     public void testLoginServlet() throws Exception{
 
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/login").openConnection();
@@ -37,6 +51,8 @@ public class TestJettyServer {
     }
 
     @Test
+    @PerfTest(invocations = 5, threads = 5)
+    @Required(max = 1200, average = 250)
     public void testRegisterServlet() throws Exception{
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/register").openConnection();
         http.connect();
@@ -46,6 +62,8 @@ public class TestJettyServer {
     }
 
     @Test
+    @PerfTest(invocations = 5, threads = 5)
+    @Required(max = 1200, average = 250)
     public void testPositiveAddServlet() throws Exception{
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/addPositive").openConnection();
         http.connect();
@@ -55,6 +73,8 @@ public class TestJettyServer {
     }
 
     @Test
+    @PerfTest(invocations = 5, threads = 5)
+    @Required(max = 1200, average = 250)
     public void testPositivesServlet() throws Exception{
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/positives").openConnection();
         http.connect();
@@ -65,6 +85,8 @@ public class TestJettyServer {
     }
 
     @Test
+    @PerfTest(invocations = 5, threads = 5)
+    @Required(max = 1200, average = 250)
     public void testStatsServlet() throws Exception{
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/stats").openConnection();
         http.connect();
@@ -73,6 +95,8 @@ public class TestJettyServer {
     }
 
     @After
+    @PerfTest(invocations = 5, threads = 5)
+    @Required(max = 1200, average = 250)
     public final void after() throws Exception {
         stopServer();
     }
