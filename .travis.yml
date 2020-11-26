@@ -1,0 +1,18 @@
+language: java
+sudo: false
+script: mvn clean verify
+notifications:
+	email: "javier.a.eulate@opendeusto.es"
+branches:
+  except:
+    - devJuan
+    - devJavi
+    - devLander
+    - devEneko
+
+# Ramas del repositorio a tener en cuenta
+branches:
+  only:
+    - develop
+    # Mediante expresiones regulares
+    #    - /^deploy-.*$/
