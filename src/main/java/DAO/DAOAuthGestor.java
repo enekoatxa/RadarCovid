@@ -93,6 +93,7 @@ public class DAOAuthGestor {
             	@SuppressWarnings("unchecked")
     			Query <User> q1 = persistentManager.newQuery("SELECT FROM " + User.class.getName());
     		    for (User aux : q1.executeList()) {
+					persistentManager.makeTransient(aux);
     				DAOGestor.users.add(aux);
     			}
 				transaction.commit();

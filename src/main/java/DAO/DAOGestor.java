@@ -66,14 +66,7 @@ public class DAOGestor {
             if(aux.getIdCard()==idCard)
             {
                 if (aux.getPassword().equals(password)){
-                    userLogged.setIdCard(aux.getIdCard());
-                    userLogged.setUsername(aux.getUsername());
-                    userLogged.setPassword(aux.getPassword());
-                    userLogged.setEmail(aux.getEmail());
-                    userLogged.setAge(aux.getAge());
-                    userLogged.setGender(aux.getGender());
-                    userLogged.setOccupation(aux.getOccupation());
-                    userLogged.setAdmin(aux.isAdmin());
+                    userLogged=aux;
                     return userLogged.toString();
                 } else {
                     return "errorPass";
@@ -127,15 +120,13 @@ public class DAOGestor {
 
     //COVID-19 METHODS
 
-    public boolean registerPositive(User patient, double latitude, double longitude, int year, int month, int day) {
-        boolean ok = false;
+    public boolean registerPositive(double latitude, double longitude, int year, int month, int day) {
         try {
-            ok = DAOPositiveGestor.getDAOPositivegestor().registerPositive(patient, latitude, longitude, year, month, day);
-
+            return DAOPositiveGestor.getDAOPositivegestor().registerPositive(latitude, longitude, year, month, day);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ok;
+        return false;
     }
 
     public static void positivesList()
@@ -143,7 +134,6 @@ public class DAOGestor {
         try {
             DAOPositiveGestor.getDAOPositivegestor().selectPositives();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

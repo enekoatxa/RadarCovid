@@ -1,5 +1,7 @@
 package JettyServer;
 
+import AppService.PositiveGestor;
+
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -12,24 +14,33 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 public class PositiveAddServlet extends HttpServlet {
-    private static String correctAdd = "true";
 
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
-        double longitude = Double.parseDouble(request.getParameter("longitude"));
-        double latitude = Double.parseDouble(request.getParameter("latitude"));
-        int year = Integer.parseInt(request.getParameter("year"));
-        int month = Integer.parseInt(request.getParameter("month"));
-        int day = Integer.parseInt(request.getParameter("day"));
-
-        System.out.println("I have received: User: " + user + " ,Password: " + pass + " ,Longitude: " + longitude + " ,Latitude: " + latitude
+        String ret="";
+        double longitude=0.0;
+        double latitude=0.0;
+        int year=0;
+        int month=0;
+        int day=0;
+        try {
+            longitude = Double.parseDouble(request.getParameter("longitude"));
+            latitude = Double.parseDouble(request.getParameter("latitude"));
+            year = Integer.parseInt(request.getParameter("year"));
+            month = Integer.parseInt(request.getParameter("month"));
+            day = Integer.parseInt(request.getParameter("day"));
+        } catch (NumberFormatException ex){
+            ret="errorNumber";
+        }
+        System.out.println("I have received: Longitude: " + longitude + " ,Latitude: " + latitude
                 + " ,year: " + year + " ,month: " + month + " ,day: " + day);
-        //Kalkulatu ondo erregistratu den positiboa edo ez
-        //correctAdd=callToAddPositiveManager();
-
+        try {
+            ret = Boolean.toString(PositiveGestor.getPositivegestor().registerPositive(longitude, latitude, year, month, day));
+        } catch (Exception e){
+            e.printStackTrace();
+            ret="false";
+        }
         //Prepare the response and return it
-        final ByteBuffer content = ByteBuffer.wrap(correctAdd.getBytes(StandardCharsets.UTF_8));
+        final ByteBuffer content = ByteBuffer.wrap(ret.getBytes(StandardCharsets.UTF_8));
         final AsyncContext async = request.startAsync();
         final ServletOutputStream out = response.getOutputStream();
         out.setWriteListener(new WriteListener() {

@@ -8,9 +8,6 @@ function regPositive(){
 	var month = date.split("/")[1];
 	var day = date.split("/")[2];
 
-	//call Java method with this data
-	//change loggeds in as text
-
 	var params = "?user="+loggedUser.username+"&pass="+loggedUser.pass+"&longitude="+longitude+"&latitude="+latitude+"&year="+year+"&month="+month+"&day="+day;
 	const http = new XMLHttpRequest();
 	const url = 'http://127.0.0.1:8090/addPositive';
@@ -19,8 +16,10 @@ function regPositive(){
 
 	http.onreadystatechange = (e) => {
 		if(http.readyState === XMLHttpRequest.DONE){
-			if(http.responseText=="False"){
+			if(http.responseText=="false"){
 		  	alert("There was an error registering the positive, please try again");
+		  } else if(http.responseText=="errorNumber"){
+		  	alert("Something is not complete, fill the date and place, please");
 		  } else {
 		  	alert("The registration was correct!");
 		  }
