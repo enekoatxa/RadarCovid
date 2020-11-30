@@ -1,8 +1,6 @@
 import Objects.Positive;
 import Objects.User;
-import javafx.geometry.Pos;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
