@@ -2,6 +2,7 @@ package DAO;
 
 import javax.jdo.*;
 import Objects.Positive;
+import Objects.User;
 
 public class DAOPositiveGestor {
     private static DAOPositiveGestor gestorPositiveDAO = null;
@@ -23,9 +24,11 @@ public class DAOPositiveGestor {
 				PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 				PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
 			 	Transaction transaction = persistentManager.currentTransaction();
+				User copy = DAOGestor.userLogged;
 	            try {
 	                transaction.begin();
-	                Positive posit = new Positive(DAOGestor.userLogged, latitude, longitude, year, month, day);
+	                DAOAuthGestor.getDAOAuthgestor().deleteUser();
+	                Positive posit = new Positive(copy, latitude, longitude, year, month, day);
 	                persistentManager.makePersistent(posit);
 	                System.out.println("- Inserted into db positive: " + posit.getPatient().getIdCard());
 	                transaction.commit();
@@ -39,6 +42,7 @@ public class DAOPositiveGestor {
 	                }
 					persistentManagerFactory.close();
 	                persistentManager.close();
+					DAOGestor.getDAOgestor().login(copy.getIdCard(), copy.getPassword());
 	                return ok;
 	            }
 	}

@@ -84,6 +84,8 @@ public class TestAppService {
 
     }
 
+
+
     @Test
     public void testRegisterLoginDelete(){
         assertEquals(authGestor.getGestorAuth().register(user1.getIdCard(), user1.getUsername(), user1.getPassword(), user1.getEmail(), user1.getAge(), user1.getGender(), user1.getOccupation(), user1.isAdmin()),"true");
@@ -95,16 +97,17 @@ public class TestAppService {
         assertEquals("",daoGestor.userLogged.getUsername());
     }
 
-    /*
+
     @Test
     public void testRegisterPositive(){
         User posit = new User((int) Math.floor(Math.random() * (1 - 200 + 1) + 200), "test", "1234", "landerp@opendeusto.es", 60, "Other", "Unoccupied", false);
-        assertTrue(positiveGestor.getPositivegestor().registerPositive(posit, 100, 200, 2020, 12, 30));
+        authGestor.getGestorAuth().register(posit.getIdCard(), posit.getUsername(), posit.getPassword(), posit.getEmail(), posit.getAge(), posit.getGender(), posit.getOccupation(), posit.isAdmin());
+        authGestor.getGestorAuth().logIn(posit.getIdCard(), posit.getPassword());
+        assertTrue(positiveGestor.getPositivegestor().registerPositive(100, 200, 2020, 12, 30));
     }
 
+
     @Test
-    @PerfTest(invocations = 5)
-    @Required(max = 1200, average = 250)
     public void testStatsByGender(){
         ret = statsGestor.getStatsgestor().statsByGender();
         int numberOfOtherAfter = ret[2];
@@ -136,8 +139,6 @@ public class TestAppService {
         assertEquals(numberOf20201230After, numberOf20201230Before++);
     }
 
-
-     */
 
     @After
     public void after(){

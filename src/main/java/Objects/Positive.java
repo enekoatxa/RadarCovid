@@ -19,9 +19,6 @@ import javax.jdo.annotations.*;
     @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
     private long idPositive;
     @Getter @Setter
-    @Column(name="idCard")
-    private User patient;
-    @Getter @Setter
     private double latitude;
     @Getter @Setter
     private double longitude;
@@ -31,4 +28,7 @@ import javax.jdo.annotations.*;
     private int month;
     @Getter @Setter
     private int day;
+    @Getter @Setter
+    @Column(name="idCard")
+    private User patient;
 }
