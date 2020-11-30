@@ -1,6 +1,6 @@
 Proyecto RadarCovid - The Hateful Four
 ===================================
-![radarhateful](https://user-images.githubusercontent.com/enekoatxa/RadarCovid/tree/devJavi/src/main/radarhateful.png)
+![radarhateful](/src/main/resources/radarhateful.png?raw=true "RadarCovid, un proyecto de The Hateful Four")
 ## Indicaciones
 1. Móntese el proyecto Maven en local.
 2. Compruebe la estructura del programa.
