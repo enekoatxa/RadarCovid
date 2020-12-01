@@ -1,1 +1,9 @@
+---
+branches:
+  except:
+    - devJuan
+    - devJavi
+    - devLander
+    - devEneko
 language: java
+script: "mvn clean verify"
