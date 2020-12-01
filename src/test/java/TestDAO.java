@@ -1,8 +1,5 @@
 import DAO.DAOGestor;
 import Objects.User;
-import com.github.javatlacati.contiperf.PerfTest;
-import com.github.javatlacati.contiperf.Required;
-import com.github.javatlacati.contiperf.junit.ContiPerfRule;
 import junit.framework.JUnit4TestAdapter;
 import org.junit.After;
 import org.junit.Before;
@@ -28,7 +25,7 @@ public class TestDAO {
 
     @Before
     public void setUp() {
-        int idRandom = (int) Math.floor(Math.random()*(1-200+1)+200);
+        int idRandom = (int) Math.floor(Math.random()*(1-2000+1)+2000);
         when(user1.getIdCard()).thenReturn(idRandom);
         when(user1.getUsername()).thenReturn("test");
         when(user1.getPassword()).thenReturn("1234");
@@ -47,17 +44,16 @@ public class TestDAO {
         assertEquals(user1.getUsername(), DAOGestor.userLogged.getUsername());
         DAOGestor.getDAOgestor().deleteUser();
         assertEquals("", DAOGestor.userLogged.getUsername());
-        Thread.sleep(121);
     }
 
-    /*
+
     @Test
     public void testRegisterPositive(){
-        User positivo = new User (999, user1.getUsername(), user1.getPassword(), user1.getEmail(), user1.getAge(), user1.getGender(), user1.getOccupation(), user1.isAdmin());
-        assertTrue(DAOGestor.getDAOgestor().registerPositive(positivo, 100, 200, 2020, 12, 30));
+        User posit = new User((int) Math.floor(Math.random() * (1 - 2000 + 1) + 2000), "test", "1234", "landerp@opendeusto.es", 60, "Other", "Unoccupied", false);
+        DAOGestor.getDAOgestor().registrarse(posit.getIdCard(), posit.getUsername(), posit.getPassword(), posit.getEmail(), posit.getAge(), posit.getGender(), posit.getOccupation(), posit.isAdmin());
+        DAOGestor.getDAOgestor().login(posit.getIdCard(), posit.getPassword());
+        assertTrue(DAOGestor.getDAOgestor().registerPositive(100, 200, 2020, 12, 30));
     }
-
-     */
 
     @After
     public final void after(){

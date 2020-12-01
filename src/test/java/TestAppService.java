@@ -3,15 +3,10 @@ import AppService.PositiveGestor;
 import AppService.StatsGestor;
 import DAO.DAOGestor;
 import DAO.DAOStatsGestor;
-import Objects.Positive;
 import Objects.User;
-import com.github.javatlacati.contiperf.PerfTest;
-import com.github.javatlacati.contiperf.Required;
-import com.github.javatlacati.contiperf.junit.ContiPerfRule;
 import junit.framework.JUnit4TestAdapter;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -58,7 +53,7 @@ public class TestAppService {
 
     @Before
     public void setUp() {
-        int idRandom = (int) Math.floor(Math.random() * (1 - 200 + 1) + 200);
+        int idRandom = (int) Math.floor(Math.random() * (1 - 2000 + 1) + 2000);
         when(user1.getIdCard()).thenReturn(idRandom);
         when(user1.getUsername()).thenReturn("test");
         when(user1.getPassword()).thenReturn("1234");
@@ -103,7 +98,7 @@ public class TestAppService {
 
     @Test
     public void testRegisterPositive(){
-        User posit = new User((int) Math.floor(Math.random() * (1 - 200 + 1) + 200), "test", "1234", "landerp@opendeusto.es", 60, "Other", "Unoccupied", false);
+        User posit = new User((int) Math.floor(Math.random() * (1 - 2000 + 1) + 2000), "test", "1234", "landerp@opendeusto.es", 60, "Other", "Unoccupied", false);
         authGestor.getGestorAuth().register(posit.getIdCard(), posit.getUsername(), posit.getPassword(), posit.getEmail(), posit.getAge(), posit.getGender(), posit.getOccupation(), posit.isAdmin());
         authGestor.getGestorAuth().logIn(posit.getIdCard(), posit.getPassword());
         assertTrue(positiveGestor.getPositivegestor().registerPositive(100, 200, 2020, 12, 30));
