@@ -95,8 +95,6 @@ public class TestJettyServer {
     }
 
     @After
-    @PerfTest(invocations = 5, threads = 5)
-    @Required(max = 1200, average = 250)
     public final void after() throws Exception {
         stopServer();
     }

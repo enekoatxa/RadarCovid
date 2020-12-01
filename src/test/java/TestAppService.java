@@ -31,6 +31,7 @@ public class TestAppService {
     AuthGestor authGestor;
     PositiveGestor positiveGestor;
     StatsGestor statsGestor;
+    DAOStatsGestor daoStatsGestor;
 
     //For StatsByGender
     int[] ret = new int[3];
@@ -67,16 +68,18 @@ public class TestAppService {
         when(user1.getOccupation()).thenReturn("Student");
         when(user1.isAdmin()).thenReturn(false);
 
-        ret = statsGestor.getStatsgestor().statsByGender();
+        statsGestor.getStatsgestor().obtainStatistics();
+        daoStatsGestor =DAOStatsGestor.getDAOStatsgestor();
+        ret = daoStatsGestor.getStatsGender();
         numberOfOtherBefore = ret[2];
 
-        ret2 = statsGestor.getStatsgestor().statsByAge();
+        ret2 = daoStatsGestor.getStatsAge();
         numberOfAge60Before = ret2[59];
 
-        ret3 = statsGestor.getStatsgestor().statsByOccupation();
+        ret3 = daoStatsGestor.getStatsOccupation();
         numberOfUnoccupiedBefore = ret3[3];
 
-        ret4 = statsGestor.getStatsgestor().statsByTime();
+        ret4 = daoStatsGestor.getStatsTime();
         numberOf20201230Before = ret4[2020%2020*12+12-1];
 
 
@@ -109,7 +112,7 @@ public class TestAppService {
 
     @Test
     public void testStatsByGender(){
-        ret = statsGestor.getStatsgestor().statsByGender();
+        ret = daoStatsGestor.getStatsGender();
         int numberOfOtherAfter = ret[2];
 
         assertEquals(numberOfOtherAfter, numberOfOtherBefore++);
@@ -117,7 +120,7 @@ public class TestAppService {
 
     @Test
     public void testStatsByAge(){
-        ret2 = statsGestor.getStatsgestor().statsByAge();
+        ret2 = daoStatsGestor.getStatsAge();
         int numberOfAge60After = ret2[59];
 
         assertEquals(numberOfAge60After,numberOfAge60Before++);
@@ -125,7 +128,7 @@ public class TestAppService {
 
     @Test
     public void testStatsByOccupation(){
-        ret3 = statsGestor.getStatsgestor().statsByOccupation();
+        ret3 = daoStatsGestor.getStatsOccupation();
         int numberOfUnoccupiedAfter = ret3[3];
 
         assertEquals(numberOfUnoccupiedAfter, numberOfUnoccupiedBefore++);
@@ -133,12 +136,11 @@ public class TestAppService {
 
     @Test
     public void testStatsByTime(){
-        ret4 = statsGestor.getStatsgestor().statsByTime();
+        ret4 = daoStatsGestor.getStatsTime();
         int numberOf20201230After = ret4[2020%2020*12+12-1];
 
         assertEquals(numberOf20201230After, numberOf20201230Before++);
     }
-
 
     @After
     public void after(){
@@ -147,8 +149,5 @@ public class TestAppService {
         ret3=null;
         ret4=null;
     }
-
-
-
 
 }
