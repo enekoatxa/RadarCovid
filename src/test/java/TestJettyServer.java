@@ -74,7 +74,7 @@ public class TestJettyServer {
 
     @Test
     @PerfTest(invocations = 5)
-    @Required(max = 20000, average = 10000)
+    @Required(max = 30000, average = 10000)
     public void testPositivesServlet() throws Exception{
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/positives").openConnection();
         http.connect();
@@ -86,7 +86,7 @@ public class TestJettyServer {
 
     @Test
     @PerfTest(invocations = 5)
-    @Required(max = 20000, average = 10000)
+    @Required(max = 40000, average = 20000)
     public void testStatsServlet() throws Exception{
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/stats").openConnection();
         http.connect();
