@@ -18,24 +18,12 @@ public class StatsGestor {
         }
         return statsGestor;
     }
+
     public String obtainStatistics() {
-        return "{\"ageStats\":"+ Arrays.toString(statsByAge()) + ",\"genderStats\":" + Arrays.toString(statsByGender()) + ",\"occuStats\":" +
-                Arrays.toString(statsByOccupation()) + ",\"timeStats\":" + Arrays.toString(statsByTime()) + "}";
-    }
-
-    public int[] statsByGender(){
-        return DAOStatsGestor.getDAOStatsgestor().readPositivesByGender();
-    }
-
-    public int[] statsByAge(){
-        return DAOStatsGestor.getDAOStatsgestor().readPositivesByAge();
-    }
-
-    public int[] statsByOccupation(){
-        return DAOStatsGestor.getDAOStatsgestor().readPositivesByOccupation();
-    }
-
-    public int[] statsByTime(){
-        return DAOStatsGestor.getDAOStatsgestor().readPositivesByTime();
+        DAOStatsGestor.getDAOStatsgestor().readAllStats();
+        return "{\"ageStats\":"+ Arrays.toString(DAOStatsGestor.getDAOStatsgestor().getStatsAge()) +
+                ",\"genderStats\":" + Arrays.toString(DAOStatsGestor.getDAOStatsgestor().getStatsGender()) +
+                ",\"occuStats\":" + Arrays.toString(DAOStatsGestor.getDAOStatsgestor().getStatsOccupation()) +
+                ",\"timeStats\":" + Arrays.toString(DAOStatsGestor.getDAOStatsgestor().getStatsTime()) + "}";
     }
 }
