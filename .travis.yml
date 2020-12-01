@@ -1,10 +1,1 @@
 language: java
-script: mvn clean verify
-notifications:
-	email: "javier.a.eulate@opendeusto.es"
-branches:
-  except:
-    - devJuan
-    - devJavi
-    - devLander
-    - devEneko
