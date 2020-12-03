@@ -16,7 +16,7 @@ mvn [clean | validate | compile | exec:java -PJettyServer | site]
 
 ```mvn validate```: Validate the project is correct and all necessary information is available.
 
-```mvn compile```: Compiles and loads the ant build.xml file.
+```mvn compile```: Compiles and loads the pom.xml file.
 
 ```mvn exec:java -PJettyServer```: Runs the Jetty Server.
 
