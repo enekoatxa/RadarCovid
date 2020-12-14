@@ -1,0 +1,12 @@
+digraph "DAO.DAOGestor.deleteUser"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="DAO.DAOGestor.deleteUser",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DAO.DAOAuthGestor.deleteUser",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_auth_gestor.html#a4b8e2d8d7dc1ce7407ecdf6a620feab2",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="DAO.DAOAuthGestor.getDAOAuthgestor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_auth_gestor.html#a66e416b12c23bcafc97224a2d2c29c1a",tooltip=" "];
+}
