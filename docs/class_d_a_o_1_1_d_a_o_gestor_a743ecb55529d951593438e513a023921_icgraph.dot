@@ -1,0 +1,29 @@
+digraph "DAO.DAOGestor.getDAOgestor"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="DAO.DAOGestor.getDAOgestor",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AppService.AuthGestor.delete\lCount",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_auth_gestor.html#aa6ff344b90eb77a27dfc200fba74c523",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AppService.AuthGestor.logIn",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_auth_gestor.html#aeafd43b974741a663c41ffcbb3accaf9",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="JettyServer.LoginServlet.doGet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_jetty_server_1_1_login_servlet.html#a1b41970a65fe867dfe40f80b4ccea338",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="DAO.DAOGestor.main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a418601ed26da405dd755a8b193aa9d70",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="AppService.AuthGestor.register",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_auth_gestor.html#a5308a024c1e22f27e463c0987b00b9dd",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="JettyServer.RegisterServlet.doGet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_jetty_server_1_1_register_servlet.html#ab03335b5154d4e8ac1ca4797147e9d00",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="AppService.PositiveGestor.register\lPositive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_positive_gestor.html#a06e5a688499ef9d8dd92cb524f846e1e",tooltip=" "];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="JettyServer.PositiveAddServlet.doGet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_jetty_server_1_1_positive_add_servlet.html#aa97237f9c84de6958b9bf679d3b0211f",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="DAO.DAOPositiveGestor.register\lPositive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_positive_gestor.html#a5602d2f32fec0dd9f222402f8b1ad48e",tooltip=" "];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="DAO.DAOGestor.registerPositive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a6ea0f06fc24dd013578351ec8e0302fd",tooltip=" "];
+  Node11 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

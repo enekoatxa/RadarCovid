@@ -1,0 +1,34 @@
+digraph "JettyServer.PositiveAddServlet.doGet"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="JettyServer.PositiveAddServlet.doGet",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AppService.PositiveGestor.get\lPositivegestor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_positive_gestor.html#aa919a9cf1980d0a4ad6bb340f2a5d59f",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AppService.PositiveGestor.register\lPositive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_positive_gestor.html#a06e5a688499ef9d8dd92cb524f846e1e",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="DAO.DAOGestor.getDAOgestor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a743ecb55529d951593438e513a023921",tooltip=" "];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="DAO.DAOGestor.registerPositive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a6ea0f06fc24dd013578351ec8e0302fd",tooltip=" "];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="DAO.DAOPositiveGestor.get\lDAOPositivegestor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_positive_gestor.html#ab608a184e07cc7ce42feb0bf50645345",tooltip=" "];
+  Node5 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="DAO.DAOPositiveGestor.register\lPositive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_positive_gestor.html#a5602d2f32fec0dd9f222402f8b1ad48e",tooltip=" "];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="DAO.DAOAuthGestor.deleteUser",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_auth_gestor.html#a4b8e2d8d7dc1ce7407ecdf6a620feab2",tooltip=" "];
+  Node7 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="DAO.DAOAuthGestor.getDAOAuthgestor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_auth_gestor.html#a66e416b12c23bcafc97224a2d2c29c1a",tooltip=" "];
+  Node7 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="DAO.DAOGestor.login",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#ab819ad89aafa47a3cdb8c5db56962895",tooltip=" "];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Objects.User.toString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_objects_1_1_user.html#aa8bc0402ab2a957ff829c59faf0c88af",tooltip=" "];
+  Node10 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="DAO.DAOGestor.usersList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a9b1457f088f46740726042ccf4e657cf",tooltip=" "];
+  Node12 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="DAO.DAOAuthGestor.select\lUsers",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_auth_gestor.html#a5e4a73e0cf46fe27bf654f1a80f4bd54",tooltip=" "];
+}

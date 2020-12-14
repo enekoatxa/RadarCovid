@@ -1,0 +1,16 @@
+digraph "DAO.DAOPositiveGestor.selectPositives"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="DAO.DAOPositiveGestor.select\lPositives",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DAO.DAOGestor.positivesList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a22cf2b35ffc6260acad919d2a8490379",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="DAO.DAOGestor.main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a418601ed26da405dd755a8b193aa9d70",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="AppService.PositiveGestor.search\lPositives",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_positive_gestor.html#a2c980437a77527176c1b6116f0399ded",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="JettyServer.PositivesServlet.doGet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_jetty_server_1_1_positives_servlet.html#a93dee73d81fa336eab434bad30eff999",tooltip=" "];
+}
