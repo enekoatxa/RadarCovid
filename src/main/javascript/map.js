@@ -23,6 +23,23 @@ function initMap1(){
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiZW5la29hdHhhIiwiYSI6ImNrZ3dpb2JnMjBhaDEydHA4YWZ0Nzc5dmYifQ.cVDNrGVHBNYAdV0BGWa0xA'
 }).addTo(mymap);
+    L.Control.geocoder().addTo(mymap);
+
+    var geocoder = L.Control.geocoder({
+  defaultMarkGeocode: false
+})
+  .on('markgeocode', function(e) {
+    var bbox = e.geocode.bbox;
+    console.log(e.geocode);
+    var poly = L.polygon([
+      bbox.getSouthEast(),
+      bbox.getNorthEast(),
+      bbox.getNorthWest(),
+      bbox.getSouthWest()
+    ]).addTo(mymap);
+    mymap.fitBounds(poly.getBounds());
+  })
+  .addTo(mymap);
 }
 
 function initMap2(){
@@ -44,4 +61,9 @@ function initMap2(){
 
 function paintPositive(positive){
 	L.marker([positive.split(",")[0], positive.split(",")[1]]).addTo(mymap);
+    var geocoder = L.Control.Geocoder.nominatim();
+    geocoder.reverse(new L.LatLng('2', '31'), 1, function (results) {
+        console.log(results);
+    });
+    
 }
