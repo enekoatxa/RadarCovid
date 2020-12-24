@@ -20,6 +20,8 @@ mvn [clean | validate | compile | exec:java -PJettyServer | site]
 
 ```mvn exec:java -PJettyServer```: Runs the Jetty Server.
 
+```mvn site```: Generates documentation locally.
+
 ## ¿Cómo lanzar el servidor?
 Se deben seguir los siguientes pasos:
 1. Colóquese dentro de la carpeta RadarCovid y abra la consola de comandos.
