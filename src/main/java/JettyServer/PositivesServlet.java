@@ -1,5 +1,6 @@
 package JettyServer;
 
+import AppService.AuthGestor;
 import AppService.PositiveGestor;
 import AppService.StatsGestor;
 import DAO.DAOGestor;
@@ -16,10 +17,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-
+/**
+ * Servlet asociado al {@link JettyServer} relacionado con la obtencion de positivos.
+ * @author Alumno
+ *
+ */
 public class PositivesServlet extends HttpServlet {
     private static String correctLogin = "true";
-
+    /**
+     * Peticion GET que obtiene los positivos. Delega la funcion en el {@link PositiveGestor#searchPositives()}
+     */
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("I have received a petition.");

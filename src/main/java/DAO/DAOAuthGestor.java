@@ -7,12 +7,20 @@ import Objects.User;
 
 import java.time.Clock;
 
+/**
+ * Gestor DAO que se relaciona con la base de datos remota a traves de Datanucleus para la autenticacion de usuarios.
+ * @author Alumno
+ *
+ */
 public class DAOAuthGestor {
     private static DAOAuthGestor gestorAuthDAO = null;
 
     private DAOAuthGestor() {
     }
-
+    /**
+     * Metodo que crea o recupera la instancia del {@link DAOAuthGestor}. Sigue el patron Singleton.
+     * @return gestorDAO
+     */
     protected static DAOAuthGestor getDAOAuthgestor()
     {
         synchronized(DAOAuthGestor.class)
@@ -21,6 +29,18 @@ public class DAOAuthGestor {
         }
         return gestorAuthDAO;
     }
+    /**
+     * Metodo que registra el usuario en la base de datos a traves de Datanucleus.
+     * @param idCard
+     * @param username
+     * @param password
+     * @param email
+     * @param age
+     * @param gender
+     * @param occupation
+     * @param admin
+     * @return string (para comprobar si se ha registrado con exito el usuario o no)
+     */
     public String registerUser(int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
 	{
 		DAOGestor.usersList();
@@ -50,7 +70,9 @@ public class DAOAuthGestor {
 					return "true";
 				}
 	}
-
+    /**
+     * Metodo que borra el usuario de la base de datos a traves de Datanucleus.
+     */
     public void deleteUser()
 	{
 		 try
@@ -80,7 +102,9 @@ public class DAOAuthGestor {
 	            System.err.println("* Exception: " + ex.getMessage());
 	        }
 	}
-	
+	/**
+	 * Metodo que selecciona todos los usuarios de la base de datos a traves de Datanucleus.
+	 */
 	public void selectUsers()
 	{
 		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");

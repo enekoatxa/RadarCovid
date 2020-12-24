@@ -1,5 +1,6 @@
 package JettyServer;
 
+import AppService.AuthGestor;
 import AppService.PositiveGestor;
 
 import javax.servlet.AsyncContext;
@@ -12,9 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-
+/**
+ * Servlet asociado al {@link JettyServer} relacionado con el registro de positivo.
+ * @author Alumno
+ *
+ */
 public class PositiveAddServlet extends HttpServlet {
-
+	/**
+     * Peticion GET que realiza el registro de positivo. Delega la funcion en el {@link PositiveGestor#registerPositive(double, double, int, int, int)}
+     */
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String ret="";
         double longitude=0.0;

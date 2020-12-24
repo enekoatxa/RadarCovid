@@ -5,6 +5,11 @@ import lombok.Getter;
 
 import javax.jdo.*;
 
+/**
+ * Gestor DAO que se relaciona con la base de datos remota a traves de Datanucleus para la gestion de estadisticas.
+ * @author Alumno
+ *
+ */
 public class DAOStatsGestor {
     private static DAOStatsGestor gestorStatsDAO = null;
     @Getter
@@ -30,7 +35,10 @@ public class DAOStatsGestor {
             statsTime[i]=0;
         }
     }
-
+    /**
+     * Metodo que crea o recupera la instancia del {@link DAOStatsGestor}. Sigue el patron Singleton.
+     * @return gestorDAO
+     */
     public static DAOStatsGestor getDAOStatsgestor()
     {
         synchronized(DAOStatsGestor.class)
@@ -39,7 +47,9 @@ public class DAOStatsGestor {
         }
         return gestorStatsDAO;
     }
-
+    /**
+     * Metodo que lee todas las estadisticas de la base de datos a traves de Datanucleus.
+     */
     public void readAllStats(){
         PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
         //Insert data in the DB

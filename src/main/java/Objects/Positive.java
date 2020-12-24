@@ -4,6 +4,11 @@ import lombok.*;
 import javax.jdo.annotations.*;
 @PersistenceCapable
 @AllArgsConstructor
+/**
+ * Clase que representa los positivos en la Covid-19.
+ * @author Alumno
+ *
+ */
   public class Positive {
     public Positive(User patient, double latitude, double longitude, int year, int month, int day) {
         this.patient=patient;

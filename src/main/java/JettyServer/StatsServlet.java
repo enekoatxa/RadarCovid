@@ -1,5 +1,6 @@
 package JettyServer;
 
+import AppService.AuthGestor;
 import AppService.StatsGestor;
 import com.google.gson.Gson;
 
@@ -13,9 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-
+/**
+ * Servlet asociado al {@link JettyServer} relacionado con la obtencion de estadisticas.
+ * @author Alumno
+ *
+ */
 public class StatsServlet extends HttpServlet {
-
+	/**
+     * Peticion GET que obtiene las estadisticas. Delega la funcion en el {@link StatsGestor#obtainStatistics()}
+     */
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("I have received a petition.");

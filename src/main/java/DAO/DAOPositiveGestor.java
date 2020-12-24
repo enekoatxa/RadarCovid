@@ -4,12 +4,20 @@ import javax.jdo.*;
 import Objects.Positive;
 import Objects.User;
 
+/**
+ * Gestor DAO que se relaciona con la base de datos remota a traves de Datanucleus para la gestion de positivos.
+ * @author Alumno
+ *
+ */
 public class DAOPositiveGestor {
     private static DAOPositiveGestor gestorPositiveDAO = null;
 
     private DAOPositiveGestor() {
     }
-
+    /**
+     * Metodo que crea o recupera la instancia del {@link DAOPositiveGestor}. Sigue el patron Singleton.
+     * @return gestorDAO
+     */
     public static DAOPositiveGestor getDAOPositivegestor()
     {
         synchronized(DAOPositiveGestor.class)
@@ -18,6 +26,15 @@ public class DAOPositiveGestor {
         }
         return gestorPositiveDAO;
     }
+    /**
+     * Metodo que registra el positivo en la base de datos a traves de Datanucleus.
+     * @param latitude
+     * @param longitude
+     * @param year
+     * @param month
+     * @param day
+     * @return boolean (si se ha registrado con exito o no)
+     */
     protected boolean registerPositive(double latitude, double longitude, int year, int month, int day)
 	{
 		boolean ok = false;
@@ -46,7 +63,10 @@ public class DAOPositiveGestor {
 	                return ok;
 	            }
 	}
-
+    /**
+     * Metodo que selecciona los positivos de la base de datos a traves de Datanucleus.
+     * @return string (lista de positivos)
+     */
     public String selectPositives()
 	{
 			String ret = "";

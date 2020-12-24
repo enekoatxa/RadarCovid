@@ -18,10 +18,16 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 import static java.lang.Integer.parseInt;
-
+/**
+ * Servlet asociado al {@link JettyServer} relacionado con el logIn del usuario.
+ * @author Alumno
+ *
+ */
 public class LoginServlet extends HttpServlet {
     private User userLogged = null;
-
+    /**
+     * Peticion GET que comprueba el logIn de un usuario. Delega la funcion en el {@link AuthGestor#logIn(int, String)}
+     */
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String idCard = request.getParameter("idCard");
         String pass = request.getParameter("pass");

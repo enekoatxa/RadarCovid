@@ -5,6 +5,11 @@ import javax.jdo.annotations.*;
 import lombok.*;
 @PersistenceCapable
 @AllArgsConstructor
+/**
+ * Clase que representa los usuarios registrados en RadarCovid.
+ * @author Alumno
+ *
+ */
 public class User {
 
     //This class uses Lombok

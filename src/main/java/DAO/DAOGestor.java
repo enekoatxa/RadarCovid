@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import javax.jdo.*;
 import javax.sql.RowSet;
 
+import AppService.AuthGestor;
 import Objects.User;
 import Objects.Positive;
 import lombok.*;
-
+/**
+ * Gestor DAO que recoge las llamadas del AppService y delega el trabajo en los demas gestores
+ * @author Alumno
+ *
+ */
 public class DAOGestor {
 
     private static DAOGestor gestorDAO = null;
@@ -17,10 +22,11 @@ public class DAOGestor {
     public static ArrayList<Positive> positives = new ArrayList<Positive>(); //Aqui se guardaran los positivos que hay en la BD remota.
     public static User userLogged = new User(1,"","","",1,"","",false);
 
-    private DAOGestor() {
-
-    }
-
+    private DAOGestor() {}
+    /**
+     * Metodo que crea o recupera la instancia del {@link DAOGestor}. Sigue el patron Singleton.
+     * @return gestorDAO
+     */
     public static DAOGestor getDAOgestor()
     {
         synchronized(DAOGestor.class)
@@ -57,7 +63,26 @@ public class DAOGestor {
     }
 
     //USER METHODS
-    
+    /**
+     * Metodo que recupera la lista de usuarios de RadarCovid. Delega el trabajo en el {@link DAOAuthGestor#selectUsers()}.
+     */
+    public static void usersList()
+    {
+        try {
+            users.clear();
+            DAOAuthGestor.getDAOAuthgestor().selectUsers();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+    /**
+     * Metodo que comprueba el login con los usuarios de la base de datos. Coteja los usuarios con la lista de @see {@link DAOGestor#usersList()}
+     * @param idCard
+     * @param password
+     * @return el usuario logeado
+     */
     public String login (int idCard, String password)
     {
         usersList();
@@ -75,7 +100,18 @@ public class DAOGestor {
         }
         return "errorUser";
     }
-
+    /**
+     * Metodo para registrarse en RadarCovid. Delega la funcion en el {@link DAOAuthGestor#registerUser(int, String, String, String, int, String, String, boolean)}.
+     * @param idCard
+     * @param username
+     * @param password
+     * @param email
+     * @param age
+     * @param gender
+     * @param occupation
+     * @param admin
+     * @return
+     */
     public String registrarse (int idCard, String username, String password, String email, int age, String gender, String occupation, boolean admin)
     {
         String response="";
@@ -89,7 +125,9 @@ public class DAOGestor {
         }
         return response;
     }
-
+    /**
+     * Metodo para borrar un usuario de RadarCovid. Delega la funcion en el {@link DAOAuthGestor#deleteUser()}
+     */
     public void deleteUser() {
         try {
             DAOAuthGestor.getDAOAuthgestor().deleteUser();
@@ -106,20 +144,18 @@ public class DAOGestor {
         }
     }
 
-    public static void usersList()
-    {
-        try {
-            users.clear();
-            DAOAuthGestor.getDAOAuthgestor().selectUsers();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-    }
+   
 
     //COVID-19 METHODS
-
+    /**
+     * Metodo para regitrar positivo en RadarCovid. Delega la funcion en el {@link DAOPositiveGestor#registerPositive(double, double, int, int, int)}
+     * @param latitude
+     * @param longitude
+     * @param year
+     * @param month
+     * @param day
+     * @return
+     */
     public boolean registerPositive(double latitude, double longitude, int year, int month, int day) {
         try {
             return DAOPositiveGestor.getDAOPositivegestor().registerPositive(latitude, longitude, year, month, day);
@@ -128,14 +164,17 @@ public class DAOGestor {
         }
         return false;
     }
-
-    public static void positivesList()
+    /**
+     * Metodo para obtener la lista de positivos de RadarCovid. Delega la funcion en el {@link DAOPositiveGestor#selectPositives()}
+     * @return 
+     */
+    public static String positivesList()
     {
         try {
-            DAOPositiveGestor.getDAOPositivegestor().selectPositives();
+            return DAOPositiveGestor.getDAOPositivegestor().selectPositives();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return null;
     }
 }
