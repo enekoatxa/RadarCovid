@@ -29,6 +29,7 @@ function login(){
 				$('#btnLogin').hide();
 				$('#btnLogout').show();
 				$('#nav3').show();
+				findCurrentPositionForAlert();
 			  }
 			}		
 		}
@@ -50,4 +51,38 @@ function logOut(){
 	$("#loggedAs").text("You are not logged in");
 	alert("You succesfully logged out");
 	$('#nav1').click();
+}
+
+function findCurrentPositionForAlert() {
+
+    var long2;
+    var lat2;
+
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        lat2 = position.coords.latitude;
+        long2 = position.coords.longitude;
+        console.log(long2);
+
+                    var params = "?longitude="+long2+"&latitude="+lat2;
+                    	const http = new XMLHttpRequest();
+                    	const url = 'http://127.0.0.1:8090/alertingSystem';
+                    	http.open("GET", url+params, true);
+                    	http.send();
+
+                    	http.onreadystatechange = (e) => {
+                    		if(http.readyState === XMLHttpRequest.DONE){
+                    			if(http.responseText=="true"){
+                    			alert("You are near of a huge quantity COVID-19 cases. Please, check your email for more information.");
+                    		  }
+                    		}
+                    	}
+        });
+
+
+    } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+    }
+
+
 }

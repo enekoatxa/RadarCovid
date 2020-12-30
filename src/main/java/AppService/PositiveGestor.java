@@ -43,6 +43,10 @@ public class PositiveGestor {
     public String searchPositives() {
         return DAOGestor.getDAOgestor().positivesList();
     }
+
+    public boolean alarmSystem (double latitude, double longitude){
+        return DAOGestor.getDAOgestor().alertOfRisk(latitude, longitude);
+    }
 }
 
 

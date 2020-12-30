@@ -177,4 +177,8 @@ public class DAOGestor {
         }
         return null;
     }
+
+    public boolean alertOfRisk(double latitude, double longitude){
+        return DAOPositiveGestor.getDAOPositivegestor().alarm(latitude, longitude);
+    }
 }

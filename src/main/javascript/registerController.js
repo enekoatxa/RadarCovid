@@ -37,3 +37,4 @@ function register(){
 function hideRegister(){
 	$('#modalRegister').modal('hide');
 }
+

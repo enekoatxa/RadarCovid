@@ -50,6 +50,7 @@ public class JettyServer {
         servletHandler.addServletWithMapping(PositiveAddServlet.class, "/addPositive");
         servletHandler.addServletWithMapping(StatsServlet.class, "/stats");
         servletHandler.addServletWithMapping(PositivesServlet.class, "/positives");
+        servletHandler.addServletWithMapping(AlertServlet.class, "/alertingSystem");
 
         server.start();
     }
