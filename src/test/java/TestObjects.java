@@ -1,12 +1,18 @@
 import Objects.Positive;
 import Objects.User;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 public class TestObjects {
+
+    static Logger logger = Logger.getLogger(TestDAO.class.getName());
 
     User user1 = new User(1, "aa", "1234", "aa@gmail.com", 22, "Male", "Student", false);
     Positive positive1 = new Positive(user1, 11, 11, 2020, 11, 23);

@@ -16,7 +16,12 @@ import java.net.URL;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 public class TestJettyServer {
+
+    static Logger logger = Logger.getLogger(TestDAO.class.getName());
 
     public static junit.framework.Test suite() {
         return new JUnit4TestAdapter(TestJettyServer.class);

@@ -16,11 +16,16 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 @RunWith(MockitoJUnitRunner.class)
 public class TestAppService {
 
     @Mock
     User user1;
+
+    static Logger logger = Logger.getLogger(TestDAO.class.getName());
 
     DAOGestor daoGestor;
     AuthGestor authGestor;

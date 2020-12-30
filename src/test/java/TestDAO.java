@@ -1,6 +1,7 @@
 import DAO.DAOGestor;
 import Objects.User;
 import junit.framework.JUnit4TestAdapter;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -13,11 +14,16 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 @RunWith(MockitoJUnitRunner.class)
 public class TestDAO {
 
     @Mock
     User user1;
+
+    static Logger logger = Logger.getLogger(TestDAO.class.getName());
 
     public static junit.framework.Test suite() {
         return new JUnit4TestAdapter(TestDAO.class);

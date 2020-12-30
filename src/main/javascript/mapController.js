@@ -14,6 +14,7 @@ function readAllPositives(){
 			for (var i = 0; i < allPositivesArray.length; i++) {
 				paintPositive(allPositivesArray[i]);
 			}
+			addingLayers();
 		}
 	}
 }
