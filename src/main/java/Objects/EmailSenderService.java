@@ -10,7 +10,18 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
+/**
+ * Clase que sirve para enviar un email al usuario en forma de alerta.
+ * @author Alumno
+ *
+ */
+
 public class EmailSenderService {
+    /**
+     * Metodo que envia el mail de alerta al correo del usuario loggeado. Para ello, hemos creado un email dentro del servicio de correo Gmail. Utiliza la libreria Javaxmail.
+     * @param asunto
+     * @param cuerpo
+     */
     public void enviarConGMail(String asunto, String cuerpo) {
 
         String remitente = "radarcovidH4";   // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.

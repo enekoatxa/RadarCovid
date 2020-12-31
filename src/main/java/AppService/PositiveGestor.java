@@ -44,6 +44,12 @@ public class PositiveGestor {
         return DAOGestor.getDAOgestor().positivesList();
     }
 
+    /**
+     * Metodo para alertar al usuario loggeado de si se encuentra en una zona con un gran numero de contagios o no. Delega la funcion en el {@link DAOGestor#alertOfRisk(double, double)}.
+     * @param latitude
+     * @param longitude
+     * @return boolean (para indicar si se encuentra en una zona de riesgo o no)
+     */
     public boolean alarmSystem (double latitude, double longitude){
         return DAOGestor.getDAOgestor().alertOfRisk(latitude, longitude);
     }

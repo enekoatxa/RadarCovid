@@ -97,6 +97,13 @@ public class DAOPositiveGestor {
 		return ret;
 	}
 
+	/**
+	 * Metodo para enviar una alarma, via email y navegador, al usuario en caso de que se encuentre en una zona con alta incidencia de COVID-19.
+	 * @param latitude
+	 * @param longitude
+	 * @return boolean (si esta en una zona con riesgo o no)
+	 */
+
 	public boolean alarm(double latitude, double longitude){
     	int contadorRiesgo = 0;
     	double radioTierra = 6371; //distancia en kilometros

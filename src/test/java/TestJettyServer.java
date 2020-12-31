@@ -91,7 +91,7 @@ public class TestJettyServer {
 
     @Test
     @PerfTest(invocations = 5)
-    @Required(max = 40000, average = 20000)
+    @Required(max = 40000, average = 25000)
     public void testStatsServlet() throws Exception{
         HttpURLConnection http = (HttpURLConnection)new URL("http://localhost:8090/stats").openConnection();
         http.connect();

@@ -52,7 +52,6 @@ public class TestDAO {
         assertEquals("", DAOGestor.userLogged.getUsername());
     }
 
-
     @Test
     public void testRegisterPositive(){
         User posit = new User((int) Math.floor(Math.random() * (1 - 2000 + 1) + 2000), "test", "1234", "landerp@opendeusto.es", 60, "Other", "Unoccupied", false);

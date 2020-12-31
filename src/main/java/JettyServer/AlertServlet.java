@@ -1,5 +1,6 @@
 package JettyServer;
 
+import AppService.AuthGestor;
 import AppService.PositiveGestor;
 
 import javax.servlet.AsyncContext;
@@ -13,7 +14,17 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Servlet asociado al {@link JettyServer} relacionado con el envio de alarmas al usuario.
+ * @author Alumno
+ *
+ */
+
 public class AlertServlet extends HttpServlet {
+
+    /**
+     * Peticion GET que comprueba la posición de un usuario. Delega la funcion en el {@link PositiveGestor#alarmSystem(double, double)}
+     */
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String ret="";
         double longitude=0.0;

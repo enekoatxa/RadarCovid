@@ -178,6 +178,12 @@ public class DAOGestor {
         return null;
     }
 
+    /**
+     * Metodo para saber si el usuario loggeado se encuentra en una zona con una gran número de positivos o no. Delega la funcion en el {@link DAOPositiveGestor#alarm(double, double)}.
+     * @param latitude
+     * @param longitude
+     * @return
+     */
     public boolean alertOfRisk(double latitude, double longitude){
         return DAOPositiveGestor.getDAOPositivegestor().alarm(latitude, longitude);
     }
