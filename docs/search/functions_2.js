@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['login_115',['logIn',['../class_app_service_1_1_auth_gestor.html#aeafd43b974741a663c41ffcbb3accaf9',1,'AppService.AuthGestor.logIn()'],['../class_d_a_o_1_1_d_a_o_gestor.html#ab819ad89aafa47a3cdb8c5db56962895',1,'DAO.DAOGestor.login()']]]
+  ['enviarcongmail_123',['enviarConGMail',['../class_objects_1_1_email_sender_service.html#a269a1a2a1571457bd0519bc5894a1022',1,'Objects::EmailSenderService']]]
 ];

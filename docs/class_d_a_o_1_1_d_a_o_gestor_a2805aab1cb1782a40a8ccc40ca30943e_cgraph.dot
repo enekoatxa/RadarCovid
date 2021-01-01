@@ -1,0 +1,14 @@
+digraph "DAO.DAOGestor.alertOfRisk"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="DAO.DAOGestor.alertOfRisk",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DAO.DAOPositiveGestor.alarm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_positive_gestor.html#a827b0b923e9d2cdec28e43a08b3193ca",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Objects.EmailSenderService.enviar\lConGMail",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_objects_1_1_email_sender_service.html#a269a1a2a1571457bd0519bc5894a1022",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="DAO.DAOPositiveGestor.get\lDAOPositivegestor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_positive_gestor.html#ab608a184e07cc7ce42feb0bf50645345",tooltip=" "];
+}

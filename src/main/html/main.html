@@ -53,7 +53,7 @@
 </head>
 <body>
 	<div id="topBar" class="navbar navbar-expand-sm bg-dark navbar-dark d-flex">
-		<a class="navbar-brand" href="#"><img src="../resources/logo.png" height="40px" width="40px"></a>
+		<a class="navbar-brand"><img src="../resources/logo.png" height="40px" width="40px"></a>
 		<span id="loggedAs" class="navbar-text">You are not logged in</span>
 		<span id="logButtons" class="ml-auto">
 			<button id="btnLogin" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Log in</button>
@@ -201,7 +201,7 @@
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Password</span>
 				    </div>
-				 	<input type="text" class="form-control" id="passLog" name="passLog" required><br>
+				 	<input type="password" class="form-control" id="passLog" name="passLog" required><br>
 				</div>
 				<div class="modal-footer">
 			      <button onclick="hideLogin()" type="button" class="btn btn-danger">Close</button>
@@ -240,9 +240,16 @@
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Password</span>
 				    </div>
-				 	<input type="text" class="form-control" id="passReg" name="passReg" required><br>
+				 	<input type="password" class="form-control" id="passReg" name="passReg" required><br>
 				</div>
 
+				<div class="input-group mb-3">
+				    <div class="input-group-prepend">
+				       <span class="input-group-text">Repeat the Password</span>
+				    </div>
+				 	<input type="password" class="form-control" id="passRegRep" name="passRegRep" required><br>
+				</div>
+				
 				<div class="input-group mb-3">
 				    <div class="input-group-prepend">
 				       <span class="input-group-text">Email</span>

@@ -2,6 +2,7 @@ package JettyServer;
 
 import AppService.AuthGestor;
 import AppService.PositiveGestor;
+import DAO.DAOAuthGestor;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 /**
  * Servlet asociado al {@link JettyServer} relacionado con el registro de positivo.
  * @author Alumno
@@ -22,6 +25,7 @@ public class PositiveAddServlet extends HttpServlet {
 	/**
      * Peticion GET que realiza el registro de positivo. Delega la funcion en el {@link PositiveGestor#registerPositive(double, double, int, int, int)}
      */
+	static Logger logger = Logger.getLogger(PositiveAddServlet.class.getName());
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String ret="";
         double longitude=0.0;
@@ -38,7 +42,7 @@ public class PositiveAddServlet extends HttpServlet {
         } catch (NumberFormatException ex){
             ret="errorNumber";
         }
-        System.out.println("I have received: Longitude: " + longitude + " ,Latitude: " + latitude
+        logger.info("I have received: Longitude: " + longitude + " ,Latitude: " + latitude
                 + " ,year: " + year + " ,month: " + month + " ,day: " + day);
         try {
             ret = Boolean.toString(PositiveGestor.getPositivegestor().registerPositive(longitude, latitude, year, month, day));

@@ -2,6 +2,8 @@ package JettyServer;
 
 import AppService.AuthGestor;
 import AppService.StatsGestor;
+import DAO.DAOAuthGestor;
+
 import com.google.gson.Gson;
 
 import javax.servlet.AsyncContext;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 /**
  * Servlet asociado al {@link JettyServer} relacionado con la obtencion de estadisticas.
  * @author Alumno
@@ -23,9 +27,10 @@ public class StatsServlet extends HttpServlet {
 	/**
      * Peticion GET que obtiene las estadisticas. Delega la funcion en el {@link StatsGestor#obtainStatistics()}
      */
+	static Logger logger = Logger.getLogger(StatsServlet.class.getName());
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("I have received a petition.");
+    	logger.info("I have received a petition.");
 
         String statsJsonString = StatsGestor.getStatsgestor().obtainStatistics();
         final ByteBuffer content = ByteBuffer.wrap(statsJsonString.getBytes(StandardCharsets.UTF_8));

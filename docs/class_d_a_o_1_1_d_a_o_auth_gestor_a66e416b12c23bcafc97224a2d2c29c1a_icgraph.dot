@@ -31,10 +31,9 @@ digraph "DAO.DAOAuthGestor.getDAOAuthgestor"
   Node13 [label="AppService.AuthGestor.logIn",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_auth_gestor.html#aeafd43b974741a663c41ffcbb3accaf9",tooltip=" "];
   Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="JettyServer.LoginServlet.doGet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_jetty_server_1_1_login_servlet.html#a1b41970a65fe867dfe40f80b4ccea338",tooltip=" "];
-  Node12 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="DAO.DAOGestor.main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a418601ed26da405dd755a8b193aa9d70",tooltip=" "];
   Node12 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node11 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="DAO.DAOGestor.main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a418601ed26da405dd755a8b193aa9d70",tooltip=" "];
   Node11 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node16 [label="DAO.DAOAuthGestor.registerUser",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_auth_gestor.html#a369612d1e5e4be434ca6fb60caef0df7",tooltip=" "];
   Node16 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

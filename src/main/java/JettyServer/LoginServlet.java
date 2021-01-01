@@ -1,6 +1,7 @@
 package JettyServer;
 
 import AppService.AuthGestor;
+import DAO.DAOAuthGestor;
 import DAO.DAOGestor;
 import Objects.User;
 import com.google.gson.Gson;
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import static java.lang.Integer.parseInt;
 /**
@@ -28,10 +31,11 @@ public class LoginServlet extends HttpServlet {
     /**
      * Peticion GET que comprueba el logIn de un usuario. Delega la funcion en el {@link AuthGestor#logIn(int, String)}
      */
+    static Logger logger = Logger.getLogger(LoginServlet.class.getName());
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String idCard = request.getParameter("idCard");
         String pass = request.getParameter("pass");
-        System.out.println("I have received: User: " + idCard + " Password: " + pass);
+        logger.info("I have received: User: " + idCard + " Password: " + pass);
         String responseString ="";
         try{
             responseString = AuthGestor.getGestorAuth().logIn(Integer.parseInt(idCard), pass);

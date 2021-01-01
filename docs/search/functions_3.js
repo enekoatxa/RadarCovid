@@ -1,4 +1,10 @@
 var searchData=
 [
-  ['main_116',['main',['../class_d_a_o_1_1_d_a_o_gestor.html#a418601ed26da405dd755a8b193aa9d70',1,'DAO.DAOGestor.main()'],['../class_jetty_server_1_1_jetty_server.html#a048005348e4c6d83b41178e4a075a211',1,'JettyServer.JettyServer.main()']]]
+  ['getdaoauthgestor_124',['getDAOAuthgestor',['../class_d_a_o_1_1_d_a_o_auth_gestor.html#a66e416b12c23bcafc97224a2d2c29c1a',1,'DAO::DAOAuthGestor']]],
+  ['getdaogestor_125',['getDAOgestor',['../class_d_a_o_1_1_d_a_o_gestor.html#a743ecb55529d951593438e513a023921',1,'DAO::DAOGestor']]],
+  ['getdaopositivegestor_126',['getDAOPositivegestor',['../class_d_a_o_1_1_d_a_o_positive_gestor.html#ab608a184e07cc7ce42feb0bf50645345',1,'DAO::DAOPositiveGestor']]],
+  ['getdaostatsgestor_127',['getDAOStatsgestor',['../class_d_a_o_1_1_d_a_o_stats_gestor.html#a2d8a379e517b941bc854a5926f72edda',1,'DAO::DAOStatsGestor']]],
+  ['getgestorauth_128',['getGestorAuth',['../class_app_service_1_1_auth_gestor.html#a857feabfe0cfcf127dae634fbf7f73ad',1,'AppService::AuthGestor']]],
+  ['getpositivegestor_129',['getPositivegestor',['../class_app_service_1_1_positive_gestor.html#aa919a9cf1980d0a4ad6bb340f2a5d59f',1,'AppService::PositiveGestor']]],
+  ['getstatsgestor_130',['getStatsgestor',['../class_app_service_1_1_stats_gestor.html#aa2a656a7ce99bffecb072143411c896c',1,'AppService::StatsGestor']]]
 ];

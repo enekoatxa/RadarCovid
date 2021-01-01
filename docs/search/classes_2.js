@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jettyserver_76',['JettyServer',['../class_jetty_server_1_1_jetty_server.html',1,'JettyServer']]]
+  ['emailsenderservice_85',['EmailSenderService',['../class_objects_1_1_email_sender_service.html',1,'Objects']]]
 ];

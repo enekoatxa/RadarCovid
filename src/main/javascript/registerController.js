@@ -2,13 +2,14 @@ function register(){
 	var idCard = document.getElementById("idCardReg").value;
 	var user = document.getElementById("userReg").value;
 	var pass = document.getElementById("passReg").value;
+	var passRep = document.getElementById("passRegRep").value;
 	var email = document.getElementById("emailReg").value;
 	var age = document.getElementById("ageReg").value;
 	var gender = document.getElementById("genderReg").value;
 	var occupation = document.getElementById("occupationReg").value;
 
 	// call Java method with this data
-	if(idCard!="" && user!="" && pass!="" && email!="" && age!="" && gender!="" && occupation!=""){
+	if(idCard!="" && user!="" && pass!="" && email!="" && age!="" && gender!="" && occupation!="" && pass==passRep){
 		var params = "?idCard="+idCard+"&user="+user+"&pass="+pass+"&email="+email+"&age="+age+"&gender="+gender+"&occupation="+occupation;
 		const http = new XMLHttpRequest();
 		const url = 'http://127.0.0.1:8090/register';
@@ -26,10 +27,12 @@ function register(){
 			  } else if(http.responseText=="true"){
 			  	alert("The registration was correct, now you can log in!");
 			  	hideRegister();
-			  }
+			  } 				
 			}
 		}
-	} else {
+	}
+	else if(pass!=passRep) alert("Passwords do not coincide, try again");
+	else {
 		alert("Some input is not complete, try again");
 	}
 }

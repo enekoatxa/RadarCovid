@@ -1,5 +1,6 @@
 var namespace_jetty_server =
 [
+    [ "AlertServlet", "class_jetty_server_1_1_alert_servlet.html", "class_jetty_server_1_1_alert_servlet" ],
     [ "JettyServer", "class_jetty_server_1_1_jetty_server.html", null ],
     [ "LoginServlet", "class_jetty_server_1_1_login_servlet.html", "class_jetty_server_1_1_login_servlet" ],
     [ "PositiveAddServlet", "class_jetty_server_1_1_positive_add_servlet.html", "class_jetty_server_1_1_positive_add_servlet" ],

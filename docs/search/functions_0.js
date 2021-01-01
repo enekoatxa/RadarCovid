@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['deletecount_105',['deleteCount',['../class_app_service_1_1_auth_gestor.html#aa6ff344b90eb77a27dfc200fba74c523',1,'AppService::AuthGestor']]],
-  ['deleteuser_106',['deleteUser',['../class_d_a_o_1_1_d_a_o_auth_gestor.html#a4b8e2d8d7dc1ce7407ecdf6a620feab2',1,'DAO.DAOAuthGestor.deleteUser()'],['../class_d_a_o_1_1_d_a_o_gestor.html#a50627681087d0980c63a832df4889cc5',1,'DAO.DAOGestor.deleteUser()']]],
-  ['doget_107',['doGet',['../class_jetty_server_1_1_login_servlet.html#a1b41970a65fe867dfe40f80b4ccea338',1,'JettyServer.LoginServlet.doGet()'],['../class_jetty_server_1_1_positive_add_servlet.html#aa97237f9c84de6958b9bf679d3b0211f',1,'JettyServer.PositiveAddServlet.doGet()'],['../class_jetty_server_1_1_positives_servlet.html#a93dee73d81fa336eab434bad30eff999',1,'JettyServer.PositivesServlet.doGet()'],['../class_jetty_server_1_1_register_servlet.html#ab03335b5154d4e8ac1ca4797147e9d00',1,'JettyServer.RegisterServlet.doGet()'],['../class_jetty_server_1_1_stats_servlet.html#afc4b899aabe8a1f55e01f48fe36f7421',1,'JettyServer.StatsServlet.doGet()']]]
+  ['alarm_117',['alarm',['../class_d_a_o_1_1_d_a_o_positive_gestor.html#a827b0b923e9d2cdec28e43a08b3193ca',1,'DAO::DAOPositiveGestor']]],
+  ['alarmsystem_118',['alarmSystem',['../class_app_service_1_1_positive_gestor.html#a70134df70c43573fd6b0fbaf67c1ddf7',1,'AppService::PositiveGestor']]],
+  ['alertofrisk_119',['alertOfRisk',['../class_d_a_o_1_1_d_a_o_gestor.html#a2805aab1cb1782a40a8ccc40ca30943e',1,'DAO::DAOGestor']]]
 ];

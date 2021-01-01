@@ -2,11 +2,14 @@ package DAO;
 
 import javax.jdo.*;
 
+import org.apache.log4j.Logger;
+
 import Objects.Positive;
 import Objects.User;
 
 import java.time.Clock;
-
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 /**
  * Gestor DAO que se relaciona con la base de datos remota a traves de Datanucleus para la autenticacion de usuarios.
  * @author Alumno
@@ -14,7 +17,7 @@ import java.time.Clock;
  */
 public class DAOAuthGestor {
     private static DAOAuthGestor gestorAuthDAO = null;
-
+    static Logger logger = Logger.getLogger(DAOAuthGestor.class.getName());
     private DAOAuthGestor() {
     }
     /**
@@ -56,10 +59,10 @@ public class DAOAuthGestor {
 					transaction.begin();
 					User user = new User(idCard, username, password, email, age, gender, occupation, admin);
 					persistentManager.makePersistent(user);
-					System.out.println("- Inserted into db user: " + user.getIdCard());
+					logger.info("- Inserted into db user: " + user.getIdCard());
 					transaction.commit();
 				} catch (Exception ex) {
-					System.err.println("* Exception inserting user into db: " + ex.getMessage());
+					logger.error("* Exception inserting user into db: " + ex.getMessage());
 				} finally {
 					if (transaction.isActive()) {
 						transaction.rollback();
@@ -85,10 +88,10 @@ public class DAOAuthGestor {
 	            	transaction.begin();
 					User usudelete = persistentManager.getObjectById(User.class, DAOGestor.userLogged.getIdCard());
 	            	persistentManager.deletePersistent(usudelete);
-	            	System.out.println("User deleted");
+	            	logger.info("User deleted");
 					transaction.commit();
 	            } catch (Exception ex) {
-	                System.err.println("* Exception deleting user from db: " + ex.getMessage());
+	            	logger.error("* Exception deleting user from db: " + ex.getMessage());
 	            } finally {
 	                if (transaction.isActive()) {
 	                	transaction.rollback();
@@ -99,7 +102,7 @@ public class DAOAuthGestor {
 	        }
 	        catch (Exception ex)
 	        {
-	            System.err.println("* Exception: " + ex.getMessage());
+	        	logger.error("* Exception: " + ex.getMessage());
 	        }
 	}
 	/**
@@ -123,7 +126,7 @@ public class DAOAuthGestor {
 				transaction.commit();
 
             } catch (Exception ex) {
-                System.err.println("* Exception selecting users from db: " + ex.getMessage());
+            	logger.error("* Exception selecting users from db: " + ex.getMessage());
             }finally {
 			if (transaction.isActive()) {
 				transaction.rollback();

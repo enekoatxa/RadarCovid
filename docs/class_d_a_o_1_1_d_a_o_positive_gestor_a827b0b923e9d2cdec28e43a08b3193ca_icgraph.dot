@@ -1,0 +1,14 @@
+digraph "DAO.DAOPositiveGestor.alarm"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="DAO.DAOPositiveGestor.alarm",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DAO.DAOGestor.alertOfRisk",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_a_o_1_1_d_a_o_gestor.html#a2805aab1cb1782a40a8ccc40ca30943e",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AppService.PositiveGestor.alarm\lSystem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_service_1_1_positive_gestor.html#a70134df70c43573fd6b0fbaf67c1ddf7",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="JettyServer.AlertServlet.doGet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_jetty_server_1_1_alert_servlet.html#a4bda0b96c8b0764d23644fd17b31b68e",tooltip=" "];
+}

@@ -46,7 +46,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_auth_gestor_8java.html"
+"_alert_servlet_8java.html"
 ];
 
 var SYNCONMSG = 'click en deshabilitar sincronización';

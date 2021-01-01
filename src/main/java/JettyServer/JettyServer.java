@@ -5,13 +5,18 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
+
+import DAO.DAOAuthGestor;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 /**
  * Servidor Jetty para poder asociar el HTML y poder recoger las peticiones HTTP que realice el usuario.
  * @author Alumno
  *
  */
 public class JettyServer {
-
+	static Logger logger = Logger.getLogger(JettyServer.class.getName());
     private static Server server;
     /**
      * Metodo en el que se inicia la aplicacion. Lanza el metodo {@link JettyServer#start()}

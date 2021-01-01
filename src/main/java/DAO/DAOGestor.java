@@ -9,6 +9,9 @@ import AppService.AuthGestor;
 import Objects.User;
 import Objects.Positive;
 import lombok.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 /**
  * Gestor DAO que recoge las llamadas del AppService y delega el trabajo en los demas gestores
  * @author Alumno
@@ -21,7 +24,7 @@ public class DAOGestor {
     public static ArrayList<User> users = new ArrayList<User>(); //Aqui se guardaran los usuarios que hay en la BD remota.
     public static ArrayList<Positive> positives = new ArrayList<Positive>(); //Aqui se guardaran los positivos que hay en la BD remota.
     public static User userLogged = new User(1,"","","",1,"","",false);
-
+    static Logger logger = Logger.getLogger(DAOGestor.class.getName());
     private DAOGestor() {}
     /**
      * Metodo que crea o recupera la instancia del {@link DAOGestor}. Sigue el patron Singleton.
@@ -38,28 +41,20 @@ public class DAOGestor {
 
     public static void main(String[] args)
     {
-
-    	System.out.println("-----------------USERS IN BD-----------------");
+    	logger.info("-----------------USERS IN BD-----------------");
     	usersList();
     	for(User aux: users){
-    		System.out.println("IdCard: "+aux.getIdCard()+", Username: "+ aux.getUsername()+", Password: "+aux.getPassword()+", Email: "+ aux.getEmail()
+    		logger.info("IdCard: "+aux.getIdCard()+", Username: "+ aux.getUsername()+", Password: "+aux.getPassword()+", Email: "+ aux.getEmail()
     					+", Age: "+ aux.getAge() + ", Gender: "+ aux.getGender()+ ", Occupation: "+ aux.getOccupation()+ ", Admin: "+aux.isAdmin());
     	}
-    	System.out.println("---------------------------------------------");
-    	System.out.println("---------------POSITIVES IN BD---------------");
+    	logger.info("---------------------------------------------");
+    	logger.info("---------------POSITIVES IN BD---------------");
     	positivesList();
     	for(Positive aux: positives){
-    		System.out.println("IdPositive: "+aux.getIdPositive()+", Latitude: "+ aux.getLatitude()+
+    		logger.info("IdPositive: "+aux.getIdPositive()+", Latitude: "+ aux.getLatitude()+
     				", Longitude: "+ aux.getLongitude() + ", Year: "+ aux.getYear()+ ", Month: "+ aux.getMonth()+ ", Day: "+aux.getDay());
     	}
-    	System.out.println("---------------------------------------------");
-
-    	//DAOAuthGestor.getDAOAuthgestor().registerUser(894, "primero", "1234", "landerp@opendeusto.es", 22, "M", "Student", false);
-    	System.out.println(DAOGestor.getDAOgestor().login(999, "1234"));
-
-    	//DAOPositiveGestor.getDAOPositivegestor().registerPositive(userLogged, 100, 200, 2020, 11, 02);
-    	//DAOGestor.getDAOgestor().deleteUser();
-
+    	logger.info("---------------------------------------------");
     }
 
     //USER METHODS

@@ -1,6 +1,8 @@
 package JettyServer;
 
 import AppService.AuthGestor;
+import DAO.DAOAuthGestor;
+
 import com.google.gson.Gson;
 
 import javax.servlet.AsyncContext;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 /**
  * Servlet asociado al {@link JettyServer} relacionado con el registro de usuario.
  * @author Alumno
@@ -22,6 +26,7 @@ public class RegisterServlet extends HttpServlet {
 	/**
      * Peticion GET que realiza el registro de un usuario. Delega la funcion en el {@link AuthGestor#register(int, String, String, String, int, String, String, boolean)}
      */
+	static Logger logger = Logger.getLogger(RegisterServlet.class.getName());
     protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String idCard = request.getParameter("idCard");
         String user = request.getParameter("user");
@@ -36,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
         } catch (NumberFormatException ex){
             responseString = "errorNumber";
         }
-        System.out.println("I have received: User: " + user + " ,Password: " + pass + " ,Email: " + email + " ,Age: " + age + " ,Gender: " + gender + " ,Occupation: " + occupation);
+        logger.info("I have received: User: " + user + " ,Password: " + pass + " ,Email: " + email + " ,Age: " + age + " ,Gender: " + gender + " ,Occupation: " + occupation);
 
         //Prepare the response and return it
         final ByteBuffer content = ByteBuffer.wrap(responseString.getBytes(StandardCharsets.UTF_8));

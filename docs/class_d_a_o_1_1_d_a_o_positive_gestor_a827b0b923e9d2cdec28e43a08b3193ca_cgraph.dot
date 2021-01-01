@@ -1,0 +1,10 @@
+digraph "DAO.DAOPositiveGestor.alarm"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="DAO.DAOPositiveGestor.alarm",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Objects.EmailSenderService.enviar\lConGMail",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_objects_1_1_email_sender_service.html#a269a1a2a1571457bd0519bc5894a1022",tooltip=" "];
+}

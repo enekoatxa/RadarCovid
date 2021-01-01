@@ -1,5 +1,6 @@
 var class_d_a_o_1_1_d_a_o_gestor =
 [
+    [ "alertOfRisk", "class_d_a_o_1_1_d_a_o_gestor.html#a2805aab1cb1782a40a8ccc40ca30943e", null ],
     [ "deleteUser", "class_d_a_o_1_1_d_a_o_gestor.html#a50627681087d0980c63a832df4889cc5", null ],
     [ "login", "class_d_a_o_1_1_d_a_o_gestor.html#ab819ad89aafa47a3cdb8c5db56962895", null ],
     [ "registerPositive", "class_d_a_o_1_1_d_a_o_gestor.html#a6ea0f06fc24dd013578351ec8e0302fd", null ],

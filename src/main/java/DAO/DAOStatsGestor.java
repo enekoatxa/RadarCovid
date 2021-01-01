@@ -2,7 +2,8 @@ package DAO;
 
 import Objects.Positive;
 import lombok.Getter;
-
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import javax.jdo.*;
 
 /**
@@ -20,7 +21,7 @@ public class DAOStatsGestor {
     private int[] statsAge = new int[100];
     @Getter
     private int[] statsTime = new int[18];
-
+    static Logger logger = Logger.getLogger(DAOStatsGestor.class.getName());
     private DAOStatsGestor() {
         for (int i = 0; i < statsGender.length; i++) {
             statsGender[i]=0;
@@ -98,7 +99,7 @@ public class DAOStatsGestor {
             transaction.commit();
 
         } catch (Exception ex) {
-            System.err.println("* Exception selecting positives from db: " + ex.getMessage());
+        	logger.error("* Exception selecting positives from db: " + ex.getMessage());
         } finally {
             if (transaction.isActive()) {
                 transaction.rollback();

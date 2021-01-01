@@ -1,6 +1,8 @@
 package DAO;
 
 import javax.jdo.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import Objects.EmailSenderService;
 import Objects.Positive;
@@ -13,7 +15,7 @@ import Objects.User;
  */
 public class DAOPositiveGestor {
     private static DAOPositiveGestor gestorPositiveDAO = null;
-
+    static Logger logger = Logger.getLogger(DAOPositiveGestor.class.getName());
     private DAOPositiveGestor() {
     }
     /**
@@ -49,11 +51,11 @@ public class DAOPositiveGestor {
 	                DAOAuthGestor.getDAOAuthgestor().deleteUser();
 	                Positive posit = new Positive(copy, latitude, longitude, year, month, day);
 	                persistentManager.makePersistent(posit);
-	                System.out.println("- Inserted into db positive: " + posit.getPatient().getIdCard());
+	                logger.info("- Inserted into db positive: " + posit.getPatient().getIdCard());
 	                transaction.commit();
 	                ok = true;
 	            } catch (Exception ex) {
-	                System.err.println("* Exception inserting positive into db: " + ex.getMessage());
+	            	logger.error("* Exception inserting positive into db: " + ex.getMessage());
 	                ok = false;
 	            } finally {
 	                if (transaction.isActive()) {
@@ -86,7 +88,7 @@ public class DAOPositiveGestor {
     		    transaction.commit();
 
             } catch (Exception ex) {
-                System.err.println("* Exception selecting positives from db: " + ex.getMessage());
+            	logger.error("* Exception selecting positives from db: " + ex.getMessage());
             } finally {
                 if (transaction.isActive()) {
                 	transaction.rollback();
@@ -136,7 +138,7 @@ public class DAOPositiveGestor {
 			}
 			transaction.commit();
 		} catch (Exception ex) {
-			System.err.println("* Exception selecting positives from db: " + ex.getMessage());
+			logger.error("* Exception selecting positives from db: " + ex.getMessage());
 		} finally {
 			if (transaction.isActive()) {
 				transaction.rollback();

@@ -73,7 +73,7 @@ function findCurrentPositionForAlert() {
                     	http.onreadystatechange = (e) => {
                     		if(http.readyState === XMLHttpRequest.DONE){
                     			if(http.responseText=="true"){
-                    			alert("You are near of a huge quantity COVID-19 cases. Please, check your email for more information.");
+                    			alert("You are near of a huge quantity COVID-19 cases. Please, check out your email for more information. It could be in the SPAM folder.");
                     		  }
                     		}
                     	}
