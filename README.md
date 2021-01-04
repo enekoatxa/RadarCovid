@@ -53,4 +53,7 @@ The Hateful Four.
 
 Para ver la documentación acuda al documento PDF Documentación RadarCovid - Generado por Doxygen en LaTeX, clique en este [link](https://enekoatxa.github.io/RadarCovid/) o escanee el siguiente código QR.
 
-![QR](/src/main/resources/QR.jpeg?raw=true "")
+<p align="center">
+  <img src="https://raw.githubusercontent.com/enekoatxa/RadarCovid/devJavi/src/main/resources/QR.jpeg?raw=true alt=""/>
+</p>
+
