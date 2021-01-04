@@ -1,5 +1,6 @@
 Proyecto RadarCovid - The Hateful Four
 ===================================
+
 ![radarhateful](/src/main/resources/radarhateful.png?raw=true "RadarCovid, un proyecto de The Hateful Four")
 ## Indicaciones
 1. Móntese el proyecto Maven en local.
@@ -51,7 +52,7 @@ The Hateful Four.
 
 ## Documentación del Proyecto
 
-Para ver la documentación acuda al documento PDF Documentación RadarCovid - Generado por Doxygen en LaTeX, clique en este [link](https://enekoatxa.github.io/RadarCovid/) o escanee el siguiente código QR.
+Para ver la documentación acuda al [Documentación RadarCovid - Generado por Doxygen en LaTeX](https://github.com/enekoatxa/RadarCovid/blob/devJavi/Documentaci%C3%B3n%20RadarCovid%20-%20Generado%20por%20Doxygen%20en%20LaTeX.pdf), clique en este [link](https://enekoatxa.github.io/RadarCovid/) o escanee el siguiente código QR.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/enekoatxa/RadarCovid/devJavi/src/main/resources/QR.jpeg?raw=true alt=""/>
