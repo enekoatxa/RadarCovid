@@ -40,6 +40,15 @@ Podrá hacer, entre otras cosas:
 3. Notificar su positivo.
 4. Observar las estadísticas de contagiados.
 
+
+## Documentación del Proyecto
+
+Para ver la documentación acuda al [Documentación RadarCovid - Generado por Doxygen en LaTeX](https://github.com/enekoatxa/RadarCovid/blob/master/Documentaci%C3%B3n%20RadarCovid%20-%20Generado%20por%20Doxygen%20en%20LaTeX.pdf), clique en este [link](https://enekoatxa.github.io/RadarCovid/) o escanee el siguiente código QR.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/enekoatxa/RadarCovid/master/src/main/resources/QR.jpeg?raw=true alt=""/>
+</p>
+
 ## Contribuidores
 
 Proyecto realizado para la asignatura de Procesos de Software y Calidad, elaborado por Juan Solozabal, Lander Pisón, Eneko Atxa y Javier Álvarez de Eulate. Lo más interesante de este proyecto quizá sea la implementación de un servidor Jetty para recoger las peticiones realizadas a través de una web HTML, así como una aplicación sencilla de Datanucleus. 
@@ -49,12 +58,3 @@ Para cualquier duda o propuesta de mejora no duden en contactar con nosotros.
 Atentamente,
 
 The Hateful Four.
-
-## Documentación del Proyecto
-
-Para ver la documentación acuda al [Documentación RadarCovid - Generado por Doxygen en LaTeX](https://github.com/enekoatxa/RadarCovid/blob/devJavi/Documentaci%C3%B3n%20RadarCovid%20-%20Generado%20por%20Doxygen%20en%20LaTeX.pdf), clique en este [link](https://enekoatxa.github.io/RadarCovid/) o escanee el siguiente código QR.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/enekoatxa/RadarCovid/devJavi/src/main/resources/QR.jpeg?raw=true alt=""/>
-</p>
-
