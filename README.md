@@ -9,19 +9,23 @@ Proyecto RadarCovid - The Hateful Four
 4. Disfrute de la aplicación desde casa.
 	
 ## Comandos a utilizar a lo largo del programa
-Para lanzar el servidor, estos serán los comandos que se deben emplear. 
+Estos serán algunos comandos que se han empleado durante el proyecto. 
 ```
-mvn [clean | validate | compile | exec:java -PJettyServer | site]
+mvn [clean | validate | compile | exec:java -PJettyServer | site | doxygen:report] and make pdf
 ```
 ```mvn clean```: Removes any file created out of mvn execution.
 
-```mvn validate```: Validate the project is correct and all necessary information is available.
-
 ```mvn compile```: Compiles and loads the pom.xml file.
+
+```mvn validate```: Validate the project is correct and all necessary information is available. Copies de Doxygen HTML documentation into a docs folder.
 
 ```mvn exec:java -PJettyServer```: Runs the Jetty Server.
 
 ```mvn site```: Generates documentation locally.
+
+```mvn doxygen:report```: Generates documentation into an HTML.
+
+```make pdf```: Generates a PDF document in LaTeX thanks to Doxygen and MikTex. It must be executed in target\doxygen\latex.
 
 ## ¿Cómo lanzar el servidor?
 Se deben seguir los siguientes pasos:
@@ -40,6 +44,7 @@ Podrá hacer, entre otras cosas:
 3. Notificar su positivo.
 4. Observar las estadísticas de contagiados.
 
+Para obtener más información acerca de cómo utilizar la aplicación revise el [Manual de Usuario](https://github.com/enekoatxa/RadarCovid/blob/master/Manual%20de%20Usuario.pdf).
 
 ## Documentación del Proyecto
 
