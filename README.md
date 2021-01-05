@@ -25,7 +25,7 @@ mvn [clean | validate | compile | exec:java -PJettyServer | site | doxygen:repor
 
 ```mvn doxygen:report```: Generates documentation into an HTML.
 
-```make pdf```: Generates a PDF document in LaTeX thanks to Doxygen and MikTex. It must be executed in target\doxygen\latex.
+```make pdf```: Generates a PDF document in LaTeX thanks to [Doxygen](https://www.doxygen.nl/index.html) and [MikTex](https://miktex.org/). It must be executed in target\doxygen\latex.
 
 ## ¿Cómo lanzar el servidor?
 Se deben seguir los siguientes pasos:
@@ -56,9 +56,9 @@ Para ver la documentación acuda al [Documentación RadarCovid - Generado por Doxy
 
 ## Contribuidores
 
-Proyecto realizado para la asignatura de Procesos de Software y Calidad, elaborado por Juan Solozabal, Lander Pisón, Eneko Atxa y Javier Álvarez de Eulate. Lo más interesante de este proyecto quizá sea la implementación de un servidor Jetty para recoger las peticiones realizadas a través de una web HTML, así como una aplicación sencilla de Datanucleus. 
+Proyecto realizado para la asignatura de Procesos de Software y Calidad, elaborado por Juan Solozabal, Lander Pisón, Eneko Atxa y Javier Álvarez de Eulate. Lo más interesante de este proyecto quizá sea la implementación de un servidor [Jetty](https://www.eclipse.org/jetty/) para recoger las peticiones realizadas a través de una web HTML, así como una aplicación sencilla de [Datanucleus](https://www.datanucleus.org/). 
 
-Para cualquier duda o propuesta de mejora no duden en contactar con nosotros.
+Para cualquier duda o propuesta de mejora no duden en contactar con nosotros a través de GitHub o en [radarcovidh4@gmail.com](mailto:radarcovidh4@gmail.com?subject=[GitHub]%20Contacto%20con%20RadarCovid).
 
 Atentamente,
 
